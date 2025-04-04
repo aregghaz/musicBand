@@ -1,0 +1,35 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/prop-types": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      },
+      {
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "printWidth": 80,
+        "trailingComma": "es5",
+        "jsxBracketSameLine": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+.scroll-to-top {
+  width: 3.2rem;
+  height: 3.2rem;
+  position: fixed;
+  right: 2.875rem;
+  bottom: 3.6875rem;
+
+  background: #ff5252;
+  color: white;
+  font-size: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    transform: translate3d(0, -5px, 0);
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}

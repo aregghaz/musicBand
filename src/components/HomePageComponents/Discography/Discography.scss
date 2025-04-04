@@ -1,0 +1,19 @@
+.album-image-wrapper {
+  max-width: 255px;
+  width: 100%;
+
+  height: 235px;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    position: static !important;
+    object-fit: cover;
+    @media (max-width: 991px) {
+      transform: unset;
+    }
+  }
+}

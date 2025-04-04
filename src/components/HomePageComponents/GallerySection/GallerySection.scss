@@ -1,0 +1,11 @@
+.gallery{
+  border-bottom: 1px solid rgba(59, 75, 91, 0.3) !important;
+  
+}
+
+.image-container {
+  cursor: pointer;
+  img {
+    position: static !important;
+  }
+}

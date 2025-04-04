@@ -1,0 +1,26 @@
+.tour-section-input {
+    width: 100%;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ffffff !important;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:focus {
+        outline: 0;
+        border: 2px solid rgba(255, 255, 255, .5);
+    }
+
+    &::placeholder{
+        color: #B8B9BB !important;
+    }
+}
+.tour-button-spaced{
+    margin-left: 4px;
+}
