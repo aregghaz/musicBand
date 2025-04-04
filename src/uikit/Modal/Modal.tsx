@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
-import './Modal.scss'
+import { FC, ReactNode } from "react";
+import "./Modal.scss";
 
 interface Modal {
   children: ReactNode;
   closeModal: () => void;
 }
 
-const Modal = ({ closeModal,children }) => {
+const Modal: FC<Modal> = ({ closeModal, children }) => {
   return (
     <div className="custom-modal" onClick={closeModal}>
       <span className="close-btn" onClick={closeModal}>

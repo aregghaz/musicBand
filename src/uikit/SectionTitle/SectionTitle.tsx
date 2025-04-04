@@ -1,12 +1,12 @@
-import { FC } from 'react';
-import './SectionTitle.scss'
+import { FC } from "react";
+import "./SectionTitle.scss";
 
 interface SectionTitle {
   title?: string;
-  className?:string
+  className?: string;
 }
 
-const SectionTitle: FC<SectionTitle> = ({ title = '',className = '' }) => {
+const SectionTitle: FC<SectionTitle> = ({ title = "", className = "" }) => {
   return (
     <div className={`container ${className}`}>
       <div className="row justify-content-center">

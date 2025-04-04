@@ -7,7 +7,7 @@ const DividerSection = () => {
     <section className="divider overlay">
       <div className="background-img divider-background">
         <CustomImage src={BackgroundImage} alt="Background"  />
-        <img src={BackgroundImage}  />
+
       </div>
       <div className="container">
         <div className="row justify-center">

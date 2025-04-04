@@ -1,22 +1,23 @@
-import React from 'react';
-import BackgroundImage from '@assets/img/25.jpg';
-import Button from '@uikit/Button/Button';
-import './PreSale.scss'
-import CustomImage from '@uikit/Image/Image';
+import React from "react";
+import BackgroundImage from "@assets/img/25.jpg";
+import Button from "@uikit/Button/Button";
+import "./PreSale.scss";
+import CustomImage from "@uikit/Image/Image";
 
 const PreSaleSection = () => {
   return (
     <section className="divider overlay">
       <div className="background-img divider-background">
-      
-        <CustomImage src={BackgroundImage} alt="Background"  />
+        <CustomImage src={BackgroundImage} alt="Background" />
       </div>
 
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-lg-10">
             <div className="block-content text-center front-p">
-              <h1 className="uppercase">PRE-SALE OF 'THE Upcoming TOUR'</h1>
+              <h1 className="uppercase">
+                PRE-SALE OF &apos;THE Upcoming TOUR&apos;
+              </h1>
 
               <div className="block-presale mt-5">
                 <ul className="list-unstyled">
@@ -42,7 +43,9 @@ const PreSaleSection = () => {
                 Click for more info
               </a> */}
 
-              <Button bordered className='pre-sale-button mt-3'>Click for more info</Button>
+              <Button bordered className="pre-sale-button mt-3">
+                Click for more info
+              </Button>
             </div>
           </div>
         </div>
