@@ -2,15 +2,11 @@ import React from 'react';
 import HomePageComponent from '@components/HomePageComponents/HomePageComponent';
 
 export const metadata = {
-  title: 'Blog',
+  title: 'Music Lab',
   openGraph: {
     title: 'Blog',
   },
 };
-
-// Output:
-// <title>Blog</title>
-// <meta property='og:title' content='Blog' />
 
 const HomePage = async () => {
   return <HomePageComponent />;
