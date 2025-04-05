@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
-import './ImageModal.scss';
+import React, { FC } from "react";
+import "./ImageModal.scss";
+import CustomImage from "@uikit/Image/Image";
 
 interface ImageModal {
   selectedImage?: any;
@@ -14,7 +15,7 @@ const ImageModal: FC<ImageModal> = ({ selectedImage, closeModal }) => {
           &times;
         </span>
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <img src={selectedImage} alt="Zoomed In" />
+          <CustomImage src={selectedImage} alt="Zoomed In" />
         </div>
       </div>
     )

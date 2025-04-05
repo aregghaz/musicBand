@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import ImagePlaceholder from '@assets/img/imagePlaceholder.jpg';
-import Image, { StaticImageData } from 'next/image';
-import { FC, useEffect, useState } from 'react';
+import ImagePlaceholder from "@assets/img/imagePlaceholder.jpg";
+import Image, { StaticImageData } from "next/image";
+import { FC, useEffect, useState } from "react";
 
 interface CustomImage {
   src: string | StaticImageData | null;
@@ -10,7 +10,7 @@ interface CustomImage {
   className?: string;
 }
 
-const CustomImage: FC<CustomImage> = ({ src, alt = '', className = '' }) => {
+const CustomImage: FC<CustomImage> = ({ src, alt = "", className = "" }) => {
   const [imageSrc, setImageSrc] = useState(src ?? ImagePlaceholder);
 
   const handleError = () => {
@@ -25,7 +25,6 @@ const CustomImage: FC<CustomImage> = ({ src, alt = '', className = '' }) => {
     }
   }, [src]);
 
-
   return (
     <Image
       className={className}
@@ -34,7 +33,7 @@ const CustomImage: FC<CustomImage> = ({ src, alt = '', className = '' }) => {
       layout="fill"
       onError={handleError}
       placeholder="blur"
-      blurDataURL={'https://picsum.photos/id/237/200/300'}
+      blurDataURL={"https://picsum.photos/id/237/200/300"}
     />
   );
 };

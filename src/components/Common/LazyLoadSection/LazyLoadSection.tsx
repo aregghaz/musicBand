@@ -30,13 +30,15 @@ const LazyLoadSection: FC<ILazyLoadSection> = ({
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const sectionRefCurrent = sectionRef.current
+
+    if (sectionRefCurrent) {
+      observer.observe(sectionRefCurrent);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (sectionRefCurrent) {
+        observer.unobserve(sectionRefCurrent);
       }
     };
   }, []);

@@ -1,12 +1,13 @@
 import React from "react";
-import AboutBackground from '@assets/img/25.jpg';
-import './AboutSection.scss'
+import AboutBackground from "@assets/img/25.jpg";
+import "./AboutSection.scss";
 import CustomImage from "@uikit/Image/Image";
+import { StaticImageData } from "next/image";
 
 const AboutSection = () => {
   return (
     <section id="about" className="about overlay main">
-      <div className="background-img about-background" style={{ background: AboutBackground }}>
+      <div className="background-img about-background">
         {/* <img src={AboutBackground} alt="Background" /> */}
 
         <CustomImage src={AboutBackground} alt="Background" />
@@ -21,14 +22,14 @@ const AboutSection = () => {
               </h1>
               <p className="w-93">
                 Melbourne is the coastal capital of the southeastern Australian
-                state of Victoria. At the city's centre is the modern Federation
+                state of Victoria. At the city&apos;s centre is the modern Federation
                 Square development, with plazas, bars, and restaurants by the
                 Yarra River. In the Southbank area, the Melbourne Arts Precinct
                 is the site of Arts Centre Melbourne and the National Gallery of
                 Victoria, with Australian and indigenous art.
               </p>
               <ul className="block-social list-inline mb-4 mb-lg-0">
-                {['apple', 'play', 'amazon', 'spotify', 'soundcloud'].map(
+                {["apple", "play", "amazon", "spotify", "soundcloud"].map(
                   (icon, index) => (
                     <li className="list-inline-item mr-0" key={index}>
                       <a href="#">
