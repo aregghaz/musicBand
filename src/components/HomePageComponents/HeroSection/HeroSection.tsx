@@ -8,7 +8,6 @@ import Nav from '../../Common/Nav/Nav';
 import Button from '@uikit/Button/Button';
 import CustomImage from '@uikit/Image/Image';
 
-
 const slides = [
   {
     src: Image1,
@@ -49,7 +48,7 @@ const HeroSection = () => {
     fade: true,
     arrows: true,
     pauseOnHover: false,
-    afterChange: (currentIndex:any) => setActiveIndex(currentIndex),
+    afterChange: (currentIndex: any) => setActiveIndex(currentIndex),
     draggable: true,
     swipe: true,
     touchThreshold: 10,
@@ -84,8 +83,7 @@ const HeroSection = () => {
                     </h5>
                     {index === 0 && <div className="front-rect"></div>}
                     {slide.video && (
-                      <Button
-                      >
+                      <Button>
                         <a className="video-play-but popup-youtube"></a>
                       </Button>
                     )}

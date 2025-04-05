@@ -1,13 +1,13 @@
-import React, { FC } from "react";
-import "./ImageModal.scss";
-import CustomImage from "@uikit/Image/Image";
+import React, { FC } from 'react';
+import './ImageModal.scss';
+import CustomImage from '@uikit/Image/Image';
 
-interface ImageModal {
+interface IImageModal {
   selectedImage?: any;
   closeModal: () => void;
 }
 
-const ImageModal: FC<ImageModal> = ({ selectedImage, closeModal }) => {
+const ImageModal: FC<IImageModal> = ({ selectedImage, closeModal }) => {
   return (
     selectedImage && (
       <div className="image-modal" onClick={closeModal}>

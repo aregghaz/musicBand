@@ -45,8 +45,6 @@ const AlbumSection = () => {
 
   return (
     <section id="album" className="latest main">
-      
-
       <SectionTitle title="Latest album" />
 
       <div className="container">

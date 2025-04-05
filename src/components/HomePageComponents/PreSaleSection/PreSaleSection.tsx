@@ -1,8 +1,8 @@
-import React from "react";
-import BackgroundImage from "@assets/img/25.jpg";
-import Button from "@uikit/Button/Button";
-import "./PreSale.scss";
-import CustomImage from "@uikit/Image/Image";
+import React from 'react';
+import BackgroundImage from '@assets/img/25.jpg';
+import Button from '@uikit/Button/Button';
+import './PreSale.scss';
+import CustomImage from '@uikit/Image/Image';
 
 const PreSaleSection = () => {
   return (

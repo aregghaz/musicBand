@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React from "react";
+import React from 'react';
 import ScrollUp from '@uikit/ScrollUp/ScrollUp';
 import Footer from '@components/Common/Footer/Footer';
 import AboutSection from '@components/HomePageComponents/AboutSection/AboutSection';
@@ -21,8 +21,8 @@ export const metadata = {
   openGraph: {
     title: 'Blog',
   },
-}
- 
+};
+
 // Output:
 // <title>Blog</title>
 // <meta property="og:title" content="Blog" />
@@ -91,7 +91,6 @@ const HomePageComponent = () => {
 
       <Footer />
 
-  
       <ScrollUp />
     </div>
   );

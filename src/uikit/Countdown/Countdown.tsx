@@ -1,10 +1,10 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from 'react';
 
-interface Countdown {
+interface ICountdown {
   targetDate: Date | string;
 }
 
-const Countdown: FC<Countdown> = ({ targetDate }) => {
+const Countdown: FC<ICountdown> = ({ targetDate }) => {
   const calculateTimeLeft = useCallback(() => {
     const difference = +new Date(targetDate) - +new Date();
     let timeLeft = {};
@@ -18,7 +18,7 @@ const Countdown: FC<Countdown> = ({ targetDate }) => {
       };
     }
     return timeLeft;
-  },[targetDate]);
+  }, [targetDate]);
 
   const [timeLeft, setTimeLeft] = useState<any>(calculateTimeLeft());
 
@@ -31,7 +31,7 @@ const Countdown: FC<Countdown> = ({ targetDate }) => {
 
   return (
     <div className="countdown uppercase mb-0">
-      {timeLeft.days || 0}d {timeLeft.hours || 0}h {timeLeft.minutes || 0}m{" "}
+      {timeLeft.days || 0}d {timeLeft.hours || 0}h {timeLeft.minutes || 0}m{' '}
       {timeLeft.seconds || 0}s
     </div>
   );

@@ -3,12 +3,11 @@ import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
 import { formatDate } from '@utils/index';
 import ImagePlaceholder from '@assets/img/imagePlaceholder.jpg';
-import './NewsSection.scss'
+import './NewsSection.scss';
 
 import CustomImage from '@uikit/Image/Image';
 
 const NewsSection = () => {
-
   return (
     <LazyLoadSection
       id="news"
@@ -32,7 +31,11 @@ const NewsSection = () => {
                           <div className="col-12 col-md-6 order-md-2 blog-image-content-wrapper">
                             <div className="block-content ">
                               <a href={post.link}>
-                                <CustomImage  alt={post.title} className="img-fluid animated" src={post.image ?? ImagePlaceholder} />
+                                <CustomImage
+                                  alt={post.title}
+                                  className="img-fluid animated"
+                                  src={post.image ?? ImagePlaceholder}
+                                />
                               </a>
                             </div>
                           </div>
@@ -57,7 +60,11 @@ const NewsSection = () => {
                           <div className="col-12 col-md-6 order-1 blog-image-content-wrapper">
                             <div className="block-content">
                               <a href={post.link}>
-                              <CustomImage  alt={post.title} className="img-fluid animated" src={post.image ?? ImagePlaceholder} />
+                                <CustomImage
+                                  alt={post.title}
+                                  className="img-fluid animated"
+                                  src={post.image ?? ImagePlaceholder}
+                                />
                               </a>
                             </div>
                           </div>

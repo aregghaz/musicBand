@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
 import AlbumImg from '@assets/img/album/1.jpg';
@@ -20,7 +20,6 @@ const Discography = () => {
       className="discography main"
       endpoint="albums"
       renderData={(data) => {
-      
         const albums = data?.data;
 
         return (
@@ -30,7 +29,7 @@ const Discography = () => {
             <div className="container">
               <div className="row">
                 {albums &&
-                  albums.map((album:any, index:any) => (
+                  albums.map((album: any, index: any) => (
                     <div key={index} className="col-12 col-md-6 col-lg-3">
                       <div className="block-album block-content">
                         <h5 className="mb-0 opc-70 uppercase">
@@ -44,8 +43,6 @@ const Discography = () => {
                         </a>
                         <a href="album-single.html">
                           <div className="album-image-wrapper">
-                          
-
                             <CustomImage
                               className="animated"
                               src={album?.albumImage}
