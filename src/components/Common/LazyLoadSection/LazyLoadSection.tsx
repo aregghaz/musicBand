@@ -45,14 +45,14 @@ const LazyLoadSection: FC<ILazyLoadSection> = ({
 
   useEffect(() => {
     if (isVisible) {
-      fetchLazyData(`${BASE_URL}/${endpoint}`).then(setData);
+      // fetchLazyData(`${BASE_URL}/${endpoint}`).then(setData);
 
-      //   fetch(`${BASE_URL}/${endpoint}`)
-      //     .then((response) => response.json())
-      //     .then((data) => setData(data))
-      //     .catch((error) => {
-      //       console.error('Error fetching data', error);
-      //     });
+      fetch(`${BASE_URL}/${endpoint}`)
+        .then((response) => response.json())
+        .then((data) => setData(data))
+        .catch((error) => {
+          console.error('Error fetching data', error);
+        });
     }
   }, [isVisible, endpoint]);
 
