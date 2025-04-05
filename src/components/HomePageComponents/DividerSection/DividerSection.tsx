@@ -6,8 +6,7 @@ const DividerSection = () => {
   return (
     <section className="divider overlay">
       <div className="background-img divider-background">
-        <CustomImage src={BackgroundImage} alt="Background"  />
-
+        <CustomImage src={BackgroundImage} alt="Background" />
       </div>
       <div className="container">
         <div className="row justify-center">

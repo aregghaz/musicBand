@@ -1,5 +1,5 @@
-import React from "react";
-import "./TwitterSection.scss";
+import React from 'react';
+import './TwitterSection.scss';
 
 const TwitterSection = () => {
   return (

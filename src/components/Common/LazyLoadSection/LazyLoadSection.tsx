@@ -30,7 +30,7 @@ const LazyLoadSection: FC<ILazyLoadSection> = ({
       { threshold: 0.1 }
     );
 
-    const sectionRefCurrent = sectionRef.current
+    const sectionRefCurrent = sectionRef.current;
 
     if (sectionRefCurrent) {
       observer.observe(sectionRefCurrent);
@@ -45,7 +45,6 @@ const LazyLoadSection: FC<ILazyLoadSection> = ({
 
   useEffect(() => {
     if (isVisible) {
-    
       fetchLazyData(`${BASE_URL}/${endpoint}`).then(setData);
 
       //   fetch(`${BASE_URL}/${endpoint}`)

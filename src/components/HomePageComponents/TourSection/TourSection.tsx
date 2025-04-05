@@ -11,7 +11,7 @@ const TourSection = () => {
   const [activeTab, setActiveTab] = useState(1);
 
   const handleTabClick = (tabId: number) => setActiveTab(tabId);
-  
+
   return (
     <LazyLoadSection
       id="tours"

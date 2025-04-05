@@ -2,11 +2,11 @@ import { FC, useState } from 'react';
 import { useWindowWidth } from '../../../hooks/useWindowWidth';
 import { useVisibility } from '../../../hooks/useVIsibility';
 
-interface Nav {
+interface INav {
   navItems: string[];
 }
 
-const Nav: FC<Nav> = ({ navItems }) => {
+const Nav: FC<INav> = ({ navItems }) => {
   const [isOpenedMenu, setIsOpenedMenu] = useState<boolean>(false);
   const { isVisible } = useVisibility();
 
@@ -31,20 +31,20 @@ const Nav: FC<Nav> = ({ navItems }) => {
       className={`header ${isVisible ? 'switched-header' : 'default'}`}
       style={{ display: 'block' }}
     >
-      <div className='left-part'>
-        <a className='logo scroll' href='#wrapper'>
-          <h2 className='mb-0 uppercase'>Mousiqua.</h2>
+      <div className="left-part">
+        <a className="logo scroll" href="#wrapper">
+          <h2 className="mb-0 uppercase">Mousiqua.</h2>
         </a>
       </div>
-      <div className='right-part'>
-        <nav className='main-nav'>
+      <div className="right-part">
+        <nav className="main-nav">
           <div className={`toggle-mobile-but ${isOpenedMenu ? 'active' : ''}`}>
             <span
-              className='mobile-but'
+              className="mobile-but"
               // le={{ position: menuIconBehavior }}
               onClick={hamdleOpenMenu}
             >
-              <div className='lines'></div>
+              <div className="lines"></div>
             </span>
           </div>
           <ul
@@ -57,23 +57,23 @@ const Nav: FC<Nav> = ({ navItems }) => {
             {navItems.map((item, idx) => (
               <li key={idx}>
                 <a
-                  className='scroll list-inline-item'
+                  className="scroll list-inline-item"
                   href={`#${item.toLowerCase()}`}
                 >
                   {item}
                 </a>
               </li>
             ))}
-            <li className='block-helper'>
-              <a href='#album' className='scroll'>
+            <li className="block-helper">
+              <a href="#album" className="scroll">
                 <span>
-                  <i className='icon-cd-2'></i>
+                  <i className="icon-cd-2"></i>
                 </span>
               </a>
             </li>
-            <li className='block-helper'>
-              <span className='icon search-ico'>
-                <i className='icon-search'></i>
+            <li className="block-helper">
+              <span className="icon search-ico">
+                <i className="icon-search"></i>
               </span>
             </li>
           </ul>
