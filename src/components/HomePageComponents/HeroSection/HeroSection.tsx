@@ -7,6 +7,7 @@ import Image2 from '@assets/img/18.jpg';
 import Nav from '../../Common/Nav/Nav';
 import Button from '@uikit/Button/Button';
 import CustomImage from '@uikit/Image/Image';
+import './HeroSection.scss';
 
 const slides = [
   {
@@ -46,7 +47,7 @@ const HeroSection = () => {
     autoplay: true,
     autoplaySpeed: 5000,
     fade: true,
-    arrows: true,
+    arrows: false,
     pauseOnHover: false,
     afterChange: (currentIndex: any) => setActiveIndex(currentIndex),
     draggable: true,

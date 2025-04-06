@@ -1,39 +1,39 @@
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="pt-5 pb-5 footer">
-      {/* Container */}
       <div className="container">
         <div className="row justify-content-between align-items-center">
-          {/* Left Side */}
           <div className="col-md-6">
             <small className="small">
-              <span>&copy; 2019 all rights reserved - a product of</span>{' '}
-              mutationthemes.
+              <span>&copy; {currentYear} all rights reserved</span>
             </small>
           </div>
 
-          {/* Right Side */}
           <div className="col-md-6 text-md-right">
             <ul className="list-inline small">
               <li className="list-inline-item">
-                <a href="#">Privacy Policy</a>
+                <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
               <li className="list-inline-item">
-                <a href="#">Terms of Use</a>
+                <Link href="/terms-of-use">Terms of Use</Link>
               </li>
               <li className="list-inline-item">
-                <a href="#">About</a>
+                <Link href="/about">About</Link>
               </li>
               <li className="list-inline-item">
-                <a href="#">Legal</a>
+                <Link href="/legal">Legal</Link>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      {/* End Container */}
     </footer>
   );
 };

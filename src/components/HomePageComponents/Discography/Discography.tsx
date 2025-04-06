@@ -1,19 +1,36 @@
 'use client';
+
 import React from 'react';
+import Slider from 'react-slick';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
-import AlbumImg from '@assets/img/album/1.jpg';
-import './Discography.scss';
 import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import CustomImage from '@uikit/Image/Image';
-
-const albums = [
-  { title: 'Limitless', image: AlbumImg },
-  { title: 'Set me free', image: AlbumImg },
-  { title: 'How It Feels', image: AlbumImg },
-  { title: 'Tonight', image: AlbumImg },
-];
+import './Discography.scss';
 
 const Discography = () => {
+  const settings = {
+    dots: false,
+    arrows: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 568,
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
+    ],
+  };
   return (
     <LazyLoadSection
       id="discography"
@@ -24,13 +41,12 @@ const Discography = () => {
 
         return (
           <>
-            <SectionTitle title="Discography" />
-
+            <SectionTitle title="Discography" className="discography-title" />
             <div className="container">
-              <div className="row">
-                {albums &&
-                  albums.map((album: any, index: any) => (
-                    <div key={index} className="col-12 col-md-6 col-lg-3">
+              {albums && (
+                <Slider {...settings}>
+                  {albums.map((album: any, index: number) => (
+                    <div key={index} className="px-3">
                       <div className="block-album block-content">
                         <h5 className="mb-0 opc-70 uppercase">
                           {album.albumName}
@@ -41,15 +57,13 @@ const Discography = () => {
                         >
                           View Album ›
                         </a>
-                        <a href="album-single.html">
-                          <div className="album-image-wrapper">
-                            <CustomImage
-                              className="animated"
-                              src={album?.albumImage}
-                              alt={album?.albumName}
-                            />
-                          </div>
-                        </a>
+                        <div className="album-image-wrapper">
+                          <CustomImage
+                            className="animated"
+                            src={album?.albumImage}
+                            alt={album?.albumName}
+                          />
+                        </div>
                         <ul className="block-social list-inline mb-md-3 mt-3">
                           {[
                             'apple',
@@ -58,8 +72,8 @@ const Discography = () => {
                             'soundcloud',
                             'spotify',
                             'youtube',
-                          ].map((icon, i) => {
-                            return (
+                          ].map(
+                            (icon, i) =>
                               album[`${icon}Link`] && (
                                 <li key={i} className="list-inline-item mr-0">
                                   <a
@@ -70,22 +84,18 @@ const Discography = () => {
                                   </a>
                                 </li>
                               )
-                            );
-                          })}
+                          )}
                         </ul>
                       </div>
                     </div>
                   ))}
-              </div>
+                </Slider>
+              )}
             </div>
           </>
         );
       }}
     />
-
-    // <section id="discography" className="discography main">
-
-    // </section>
   );
 };
 
