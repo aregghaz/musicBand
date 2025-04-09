@@ -1,15 +1,31 @@
-import React from 'react';
-import AboutBackground from '@assets/img/25.jpg';
+import React, { FC } from 'react';
 import './AboutSection.scss';
 import CustomImage from '@uikit/Image/Image';
-import { StaticImageData } from 'next/image';
+import AboutBackground from '@assets/img/25.jpg';
+import { formatDateToMonthAndDay, getYearFromDate } from '@utils/index';
 
-const AboutSection = () => {
+interface IAboutSection {
+  presentationSectionData: [
+    {
+      title?: string;
+      description?: string;
+      upcomingDateFrom?: string;
+      upcomingDateTo?: string;
+      upcomingLocation?: string;
+      upcomingState?: string;
+      upcomingCountry?: string;
+    },
+    { [key: string]: string },
+  ];
+}
+
+const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
+  const [presentationSection, socialLinks] = presentationSectionData;
+
   return (
     <section id="about" className="about overlay main">
       <div className="background-img about-background">
-        {/* <img src={AboutBackground} alt="Background" /> */}
-
+        {/* Background Image can be dynamic if needed */}
         <CustomImage src={AboutBackground} alt="Background" />
       </div>
 
@@ -18,27 +34,29 @@ const AboutSection = () => {
           <div className="col-lg-5 col-md-12">
             <div className="front-p">
               <h1 className="uppercase text-white">
-                A different <br /> kind of music
+                {presentationSection?.title || ''}
               </h1>
-              <p className="w-93">
-                Melbourne is the coastal capital of the southeastern Australian
-                state of Victoria. At the city&apos;s centre is the modern
-                Federation Square development, with plazas, bars, and
-                restaurants by the Yarra River. In the Southbank area, the
-                Melbourne Arts Precinct is the site of Arts Centre Melbourne and
-                the National Gallery of Victoria, with Australian and indigenous
-                art.
-              </p>
+              <p className="w-93">{presentationSection?.description || ''}</p>
+
               <ul className="block-social list-inline mb-4 mb-lg-0">
-                {['apple', 'play', 'amazon', 'spotify', 'soundcloud'].map(
-                  (icon, index) => (
-                    <li className="list-inline-item mr-0" key={index}>
-                      <a href="#">
-                        <i className={`socicon-${icon}`}></i>
-                      </a>
-                    </li>
-                  )
-                )}
+                {socialLinks &&
+                  Object.keys(socialLinks).map((key, index) => {
+                    const link = socialLinks[key];
+                    if (link) {
+                      return (
+                        <li className="list-inline-item mr-0" key={index}>
+                          <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <i className={`socicon-${key.slice(0, -4)}`}></i>
+                          </a>
+                        </li>
+                      );
+                    }
+                    return null;
+                  })}
               </ul>
             </div>
           </div>
@@ -51,8 +69,15 @@ const AboutSection = () => {
                     Upcoming Tour
                   </h3>
                   <span className="p mb-0">
-                    Fort Mason Center
-                    <br /> San Francisco, CA
+                    {formatDateToMonthAndDay(
+                      presentationSection?.upcomingDateFrom
+                    )}{' '}
+                    {presentationSection?.upcomingDateTo &&
+                      ` to ${formatDateToMonthAndDay(
+                        presentationSection?.upcomingDateTo
+                      )}`}
+                    {presentationSection?.upcomingDateTo &&
+                      `, ${getYearFromDate(presentationSection?.upcomingDateTo)}`}
                   </span>
                 </div>
               </div>
@@ -60,8 +85,11 @@ const AboutSection = () => {
                 <div className="block-content pt-3 pb-3 text-center rounded bg-dark-blue front-p mb-4 mb-lg-0 location-block">
                   <h3 className="uppercase mb-0 font-weight-600">Location</h3>
                   <span className="p mb-0">
-                    Sunday to Wednesday
-                    <br /> July 23 to 26, 2017
+                    {presentationSection?.upcomingLocation}
+                    {presentationSection?.upcomingState &&
+                      `, ${presentationSection?.upcomingState}`}{' '}
+                    <br />
+                    {presentationSection?.upcomingCountry} <br />
                   </span>
                 </div>
               </div>

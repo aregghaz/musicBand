@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ScrollUp from '@uikit/ScrollUp/ScrollUp';
 import Footer from '@components/Common/Footer/Footer';
 import AboutSection from '@components/HomePageComponents/AboutSection/AboutSection';
@@ -15,6 +15,7 @@ import NewsSection from '@components/HomePageComponents/NewsSection/NewsSection'
 import PreSaleSection from '@components/HomePageComponents/PreSaleSection/PreSaleSection';
 import TourSection from '@components/HomePageComponents/TourSection/TourSection';
 import TwitterSection from '@components/HomePageComponents/TwitterSection/TwitterSection';
+import { BASE_URL } from '@utils/index';
 
 export const metadata = {
   title: 'Blog',
@@ -28,6 +29,36 @@ export const metadata = {
 // <meta property="og:title" content="Blog" />
 
 const HomePageComponent = () => {
+  const [data, setData] = useState({
+    presentationSection: {},
+    socialLinks: {},
+    sliders: [],
+  });
+
+  useEffect(() => {
+    const fetchSettingsData = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/settings`);
+        const result = await response.json();
+
+        if (result.data && result.data.length > 0) {
+          const settings = result.data[0];
+          setData({
+            presentationSection: settings.presentationSection,
+            socialLinks: settings.socialLinks,
+            sliders: settings.sliders,
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching settings:', error);
+      }
+    };
+
+    fetchSettingsData();
+  }, []);
+
+  console.log(data, 'data');
+
   return (
     <div className="wrapper">
       {/* <div className="block-search-form">
@@ -65,11 +96,13 @@ const HomePageComponent = () => {
         </div>
       </div> */}
 
-      <HeroSection />
+      <HeroSection sliders={data.sliders} />
 
       <AlbumSection />
 
-      <AboutSection />
+      <AboutSection
+        presentationSectionData={[data.presentationSection, data.socialLinks]}
+      />
 
       <Discography />
 
@@ -87,7 +120,7 @@ const HomePageComponent = () => {
 
       <TwitterSection />
 
-      <ContactSection />
+      <ContactSection socialLinks={data.socialLinks} />
 
       <Footer />
 
