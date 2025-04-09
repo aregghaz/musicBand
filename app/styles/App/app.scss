@@ -31,15 +31,20 @@
   -o-animation: spinner-rotate 2s ease-in-out infinite;
 }
 .spinner {
-  animation: spinner-color 8s ease-in-out infinite,
+  animation:
+    spinner-color 8s ease-in-out infinite,
     spinner-dash 2s ease-in-out infinite;
-  -webkit-animation: spinner-color 8s ease-in-out infinite,
+  -webkit-animation:
+    spinner-color 8s ease-in-out infinite,
     spinner-dash 2s ease-in-out infinite;
-  -moz-animation: spinner-color 8s ease-in-out infinite,
+  -moz-animation:
+    spinner-color 8s ease-in-out infinite,
     spinner-dash 2s ease-in-out infinite;
-  -ms-animation: spinner-color 8s ease-in-out infinite,
+  -ms-animation:
+    spinner-color 8s ease-in-out infinite,
     spinner-dash 2s ease-in-out infinite;
-  -o-animation: spinner-color 8s ease-in-out infinite,
+  -o-animation:
+    spinner-color 8s ease-in-out infinite,
     spinner-dash 2s ease-in-out infinite;
   stroke-linecap: round;
 }
@@ -215,8 +220,16 @@ section.hero {
 .header .left-part {
   max-width: 160px;
   width: 100%;
+  max-height: 46px;
+  height: 100%;
+
   float: left;
   margin-left: 3.125rem;
+
+  img {
+    height: 100%;
+    position: static !important;
+  }
 }
 .header .right-part {
   float: right;
@@ -416,7 +429,9 @@ h1.large {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%), -50%;
+  transform:
+    translate(-50%),
+    -50%;
   position: absolute;
 }
 .video-play-but {
@@ -1141,15 +1156,15 @@ img.background-img {
 
 .slick-dots {
   display: block !important;
-  bottom: 40px; /* Adjust as needed */
+  bottom: 40px !important;
 
   li {
     button {
-      width: 3px;
-      height: 3px;
+      width: 8px !important;
+      height: 8px !important;
 
       border-radius: 50% !important;
-      border: 1px solid white;
+      border: 1px solid white !important;
       // background: white !important;
       &::before {
         content: '' !important;
@@ -1172,5 +1187,19 @@ img.background-img {
   &:hover {
     color: #d0343a !important;
     opacity: 0.7;
+  }
+}
+
+@media (max-width: 768px) {
+  .slick-slider {
+    .slick-prev {
+      top: unset !important;
+      left: 10px;
+      bottom: -19px !important;
+    }
+    .slick-next {
+      top: unset !important;
+      right: 10px !important;
+    }
   }
 }

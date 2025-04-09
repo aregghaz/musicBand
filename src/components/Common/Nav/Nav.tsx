@@ -1,6 +1,13 @@
 import { FC, useState } from 'react';
 import { useWindowWidth } from '../../../hooks/useWindowWidth';
 import { useVisibility } from '../../../hooks/useVIsibility';
+import Link from 'next/link';
+
+import './Nav.scss';
+import CustomImage from '@uikit/Image/Image';
+import logoLight from '@assets/img/logoLight.png';
+
+import logoDark from '@assets/img/logoDark.png';
 
 interface INav {
   navItems: string[];
@@ -24,26 +31,21 @@ const Nav: FC<INav> = ({ navItems }) => {
       ? 'block'
       : 'none';
 
-  //   const menuIconBehavior = isOpenedMenu ? 'absolute' : 'static';
-
+  const logo = isDesktop ? (isVisible ? logoDark : logoLight) : logoDark;
   return (
     <header
       className={`header ${isVisible ? 'switched-header' : 'default'}`}
       style={{ display: 'block' }}
     >
       <div className="left-part">
-        <a className="logo scroll" href="#wrapper">
-          <h2 className="mb-0 uppercase">Mousiqua.</h2>
-        </a>
+        <Link className="logo scroll" href={'/'}>
+          <CustomImage src={logo} />
+        </Link>
       </div>
       <div className="right-part">
         <nav className="main-nav">
           <div className={`toggle-mobile-but ${isOpenedMenu ? 'active' : ''}`}>
-            <span
-              className="mobile-but"
-              // le={{ position: menuIconBehavior }}
-              onClick={hamdleOpenMenu}
-            >
+            <span className="mobile-but" onClick={hamdleOpenMenu}>
               <div className="lines"></div>
             </span>
           </div>
