@@ -9,7 +9,22 @@ export const formatDate = (isoString: string) => {
   });
 };
 
-export const formatDateToMonthAndDay = (dateString: string) => {
+export const formatDateToMonthAndDay = (dateString?: string | null) => {
+  if (!dateString) {
+    return null; // or return 'Invalid Date' or any default value you prefer
+  }
+
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+  return isNaN(date.getTime())
+    ? ''
+    : date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+};
+
+export const getYearFromDate = (dateString?: string | null): number | null => {
+  if (!dateString) {
+    return null;
+  }
+
+  const date = new Date(dateString);
+  return isNaN(date.getTime()) ? null : date.getFullYear();
 };

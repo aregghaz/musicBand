@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -8,6 +8,7 @@ import Nav from '../../Common/Nav/Nav';
 import Button from '@uikit/Button/Button';
 import CustomImage from '@uikit/Image/Image';
 import './HeroSection.scss';
+import imagePlaceHolder from '@assets/img/imagePlaceholder.jpg';
 
 const slides = [
   {
@@ -34,7 +35,15 @@ const navigationItems = [
   'Contact',
 ];
 
-const HeroSection = () => {
+interface IHeroSection {
+  sliders: Array<{
+    sliderTitle: string;
+    sliderShortDescription: string;
+    sliderImage: string;
+    sliderVideoLink?: string;
+  }>;
+}
+const HeroSection: FC<IHeroSection> = ({ sliders }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isOpenedMenu, setIsOpenedMenu] = useState<boolean>(false);
 
@@ -61,40 +70,55 @@ const HeroSection = () => {
 
   return (
     <section className="hero">
-      <Slider {...settings} className="main-slider">
-        {slides.map((slide, index) => (
-          <div key={index} className="slide-item">
-            <div
-              className={`background-img overlay ${
-                index === activeIndex ? 'zoom' : ''
-              }`}
-            >
-              <CustomImage src={slide.src} alt={slide.title} />
-            </div>
-            <div className="container hero-content">
-              <div className="row">
-                <div className="col-sm-12 text-center">
-                  <div className="inner-hero">
-                    {index === 0 && <div className="back-rect"></div>}
-                    <h1 className="large text-white uppercase mb-0">
-                      {slide.title}
-                    </h1>
-                    <h5 className="mb-0 text-white uppercase">
-                      {slide.subtitle}
-                    </h5>
-                    {index === 0 && <div className="front-rect"></div>}
-                    {slide.video && (
-                      <Button>
-                        <a className="video-play-but popup-youtube"></a>
-                      </Button>
-                    )}
+      {sliders && sliders.length > 0 ? (
+        <Slider {...settings} className="main-slider">
+          {sliders.map((slider, index) => (
+            <div key={index} className="slide-item">
+              <div
+                className={`background-img overlay ${
+                  index === activeIndex ? 'zoom' : ''
+                }`}
+              >
+                <CustomImage
+                  src={slider.sliderImage}
+                  alt={slider.sliderTitle}
+                />
+              </div>
+              <div className="container hero-content">
+                <div className="row">
+                  <div className="col-sm-12 text-center">
+                    <div className="inner-hero">
+                      {/* {index === 0 && <div className="back-rect"></div>} */}
+                      <h1 className="large text-white uppercase mb-0">
+                        {slider?.sliderTitle || ''}
+                      </h1>
+                      <h5 className="mb-0 text-white uppercase">
+                        {slider?.sliderShortDescription || ''}
+                      </h5>
+                      {/* {index === 0 && <div className="front-rect"></div>} */}
+
+                      {slider.sliderVideoLink && (
+                        <Button>
+                          <a className="video-play-but popup-youtube"></a>
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          ))}
+        </Slider>
+      ) : (
+        <div className="slide-item">
+          <div className={`background-img overlay zoom`}>
+            <CustomImage src={imagePlaceHolder} />
           </div>
-        ))}
-      </Slider>
+          <div className="container hero-content">
+            <div className="row"></div>
+          </div>
+        </div>
+      )}
 
       <Nav navItems={navigationItems} />
     </section>

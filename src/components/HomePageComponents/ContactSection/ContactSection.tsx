@@ -1,17 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './ContactSection.scss';
 import LazyLoadSection from '@components/Common/LazyLoadSection/LazyLoadSection';
 
-const ContactSection = () => {
-  const socialLinks = [
-    { icon: 'socicon-facebook', link: '#' },
-    { icon: 'socicon-instagram', link: '#' },
-    { icon: 'socicon-twitter', link: '#' },
-    { icon: 'socicon-youtube', link: '#' },
-    { icon: 'socicon-apple', link: '#' },
-    { icon: 'socicon-amazon', link: '#' },
-  ];
+interface IContactSection {
+  socialLinks: { [key: string]: string };
+}
 
+const ContactSection: FC<IContactSection> = ({ socialLinks }) => {
   return (
     <LazyLoadSection
       id="contact"
@@ -73,13 +68,25 @@ const ContactSection = () => {
               <div className="row justify-content-center">
                 <div className="col-12">
                   <ul className="block-social list-inline text-center mt-4">
-                    {socialLinks.map((social, index) => (
-                      <li key={index} className="list-inline-item">
-                        <a href={social.link}>
-                          <i className={social.icon}></i>
-                        </a>
-                      </li>
-                    ))}
+                    {socialLinks &&
+                      Object.keys(socialLinks).map((key, index) => {
+                        if (socialLinks[key]) {
+                          return (
+                            <li key={index} className="list-inline-item">
+                              <a
+                                href={socialLinks[key]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <i
+                                  className={`socicon-${key.slice(0, -4)}`}
+                                ></i>
+                              </a>
+                            </li>
+                          );
+                        }
+                        return null;
+                      })}
                   </ul>
                 </div>
               </div>
