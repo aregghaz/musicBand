@@ -57,8 +57,6 @@ const HomePageComponent = () => {
     fetchSettingsData();
   }, []);
 
-  console.log(data, 'data');
-
   return (
     <div className="wrapper">
       {/* <div className="block-search-form">

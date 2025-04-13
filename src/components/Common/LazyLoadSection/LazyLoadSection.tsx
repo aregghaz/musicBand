@@ -27,7 +27,7 @@ const LazyLoadSection: FC<ILazyLoadSection> = ({
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0, rootMargin: '200px' }
     );
 
     const sectionRefCurrent = sectionRef.current;
