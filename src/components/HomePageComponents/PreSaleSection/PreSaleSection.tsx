@@ -3,54 +3,68 @@ import BackgroundImage from '@assets/img/25.jpg';
 import Button from '@uikit/Button/Button';
 import './PreSale.scss';
 import CustomImage from '@uikit/Image/Image';
+import LazyLoadSection from '@components/Common/LazyLoadSection/LazyLoadSection';
+import { formatDateToMonthAndDay } from '@utils/index';
 
 const PreSaleSection = () => {
   return (
-    <section className="divider overlay">
-      <div className="background-img divider-background">
-        <CustomImage src={BackgroundImage} alt="Background" />
-      </div>
+    <LazyLoadSection
+      id="pre-sale-section"
+      className="divider overlay"
+      endpoint="tour-presale-dates"
+      renderData={(data) => {
+        const upcomingSectionData = data?.data[0];
 
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-12 col-lg-10">
-            <div className="block-content text-center front-p">
-              <h1 className="uppercase">
-                PRE-SALE OF &apos;THE Upcoming TOUR&apos;
-              </h1>
-
-              <div className="block-presale mt-5">
-                <ul className="list-unstyled">
-                  <li>
-                    <h5 className="uppercase list-inline-item">
-                      Pre-Sale Tour 1 :
-                    </h5>
-                    <span>2/07 - 2/09</span>
-                  </li>
-                  <li>
-                    <h5 className="uppercase list-inline-item">
-                      Pre-Sale Tour 2 :
-                    </h5>
-                    <span>2/14 - 2/16</span>
-                  </li>
-                </ul>
-                <p className="opc-70 mb-0">
-                  All pre-sales begin 12am local and end 6pm local time.
-                </p>
-              </div>
-
-              {/* <a className="btn btn-primary uppercase with-ico border-2 mt-5" href="#">
-                Click for more info
-              </a> */}
-
-              <Button bordered className="pre-sale-button mt-3">
-                Click for more info
-              </Button>
+        if (!upcomingSectionData) {
+          return (
+            <div className="background-img divider-background">
+              <CustomImage src={BackgroundImage} alt="Background" />
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+          );
+        }
+
+        const { title, tours } = upcomingSectionData;
+
+        return (
+          <>
+            <div className="background-img divider-background">
+              <CustomImage src={BackgroundImage} alt="Background" />
+            </div>
+
+            <div className="container">
+              <div className="row justify-content-center">
+                <div className="col-12 col-lg-10">
+                  <div className="block-content text-center front-p">
+                    <h2 className="uppercase">
+                      PRE-SALE OF &apos;{title}&apos;
+                    </h2>
+
+                    <div className="block-presale mt-5">
+                      <ul className="list-unstyled">
+                        {tours.map((tour: any, index: number) => (
+                          <li key={index}>
+                            <h5 className="uppercase list-inline-item">
+                              Pre-Sale Tour {index + 1} :
+                            </h5>
+                            <span>
+                              {formatDateToMonthAndDay(tour.preSaleStart,true)} - {formatDateToMonthAndDay(tour.preSaleEnd,true)}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <Button bordered className="pre-sale-button mt-3">
+                      Click for more info
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        );
+      }}
+    />
   );
 };
 
