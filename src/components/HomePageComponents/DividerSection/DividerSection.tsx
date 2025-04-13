@@ -30,14 +30,15 @@ const DividerSection = () => {
           upcomingCountry,
         } = upcomingSectionData;
 
-        
         const locationParts = [
           upcomingLocation,
           upcomingState,
           upcomingCountry,
         ].filter(Boolean);
 
-        const locationString = locationParts.length ? ` — ${locationParts.join(', ')}` : '';
+        const locationString = locationParts.length
+          ? ` — ${locationParts.join(', ')}`
+          : '';
 
         return (
           <>
@@ -49,9 +50,7 @@ const DividerSection = () => {
               <div className="row justify-center">
                 <div className="col-12">
                   <div className="block-content text-center front-p">
-                    <h1 className="uppercase">
-                      {`Time left until ${title}`}
-                    </h1>
+                    <h1 className="uppercase">{`Time left until ${title}`}</h1>
 
                     <p className="lead">
                       {closestDate} to {furthestDate} with {tourCount} shows

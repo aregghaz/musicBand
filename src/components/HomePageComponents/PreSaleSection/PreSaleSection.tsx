@@ -47,7 +47,8 @@ const PreSaleSection = () => {
                               Pre-Sale Tour {index + 1} :
                             </h5>
                             <span>
-                              {formatDateToMonthAndDay(tour.preSaleStart,true)} - {formatDateToMonthAndDay(tour.preSaleEnd,true)}
+                              {formatDateToMonthAndDay(tour.preSaleStart, true)}{' '}
+                              - {formatDateToMonthAndDay(tour.preSaleEnd, true)}
                             </span>
                           </li>
                         ))}
