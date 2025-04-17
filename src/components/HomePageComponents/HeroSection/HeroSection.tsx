@@ -8,19 +8,14 @@ import Nav from '../../Common/Nav/Nav';
 import Button from '@uikit/Button/Button';
 import CustomImage from '@uikit/Image/Image';
 import './HeroSection.scss';
-import imagePlaceHolder from '@assets/img/imagePlaceholder.jpg';
+import { STORAGE_URL } from '@utils/index';
 
-const slides = [
+const defaultSlides = [
   {
-    src: Image1,
-    title: 'Welcome to Mousiqua',
-    subtitle: 'Music Band and Musician Bootstrap Template',
-  },
-  {
-    src: Image2,
-    title: 'Limitless',
-    subtitle: 'New Album Available Everywhere',
-    video: 'https://www.youtube.com/watch?v=Gc2en3nHxA4',
+    sliderImage: Image1.src,
+    sliderTitle: 'Welcome to Music Lab',
+    sliderShortDescription: 'Where Rhythm Meets Soul',
+    sliderVideoLink: null,
   },
 ];
 
@@ -45,7 +40,6 @@ interface IHeroSection {
 }
 const HeroSection: FC<IHeroSection> = ({ sliders }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [isOpenedMenu, setIsOpenedMenu] = useState<boolean>(false);
 
   const settings = {
     dots: true,
@@ -64,15 +58,13 @@ const HeroSection: FC<IHeroSection> = ({ sliders }) => {
     touchThreshold: 10,
   };
 
-  const hamdleOpenMenu = () => {
-    setIsOpenedMenu(true);
-  };
+  const finalSliders = sliders && sliders.length > 0 ? sliders : defaultSlides;
 
   return (
     <section className="hero">
-      {sliders && sliders.length > 0 ? (
+      {finalSliders && (
         <Slider {...settings} className="main-slider">
-          {sliders.map((slider, index) => (
+          {finalSliders.map((slider, index) => (
             <div key={index} className="slide-item">
               <div
                 className={`background-img overlay ${
@@ -80,7 +72,7 @@ const HeroSection: FC<IHeroSection> = ({ sliders }) => {
                 }`}
               >
                 <CustomImage
-                  src={slider.sliderImage}
+                  src={`${STORAGE_URL}${slider.sliderImage}`}
                   alt={slider.sliderTitle}
                 />
               </div>
@@ -96,7 +88,6 @@ const HeroSection: FC<IHeroSection> = ({ sliders }) => {
                         {slider?.sliderShortDescription || ''}
                       </h5>
                       {/* {index === 0 && <div className="front-rect"></div>} */}
-
                       {slider.sliderVideoLink && (
                         <Button>
                           <a className="video-play-but popup-youtube"></a>
@@ -109,15 +100,6 @@ const HeroSection: FC<IHeroSection> = ({ sliders }) => {
             </div>
           ))}
         </Slider>
-      ) : (
-        <div className="slide-item">
-          <div className={`background-img overlay zoom`}>
-            <CustomImage src={imagePlaceHolder} />
-          </div>
-          <div className="container hero-content">
-            <div className="row"></div>
-          </div>
-        </div>
       )}
 
       <Nav navItems={navigationItems} />
