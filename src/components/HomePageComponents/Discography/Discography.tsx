@@ -6,6 +6,7 @@ import SectionTitle from '@uikit/SectionTitle/SectionTitle';
 import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import CustomImage from '@uikit/Image/Image';
 import './Discography.scss';
+import { STORAGE_URL } from '@utils/index';
 
 const Discography = () => {
   const settings = {
@@ -60,7 +61,7 @@ const Discography = () => {
                         <div className="album-image-wrapper">
                           <CustomImage
                             className="animated"
-                            src={album?.albumImage}
+                            src={`${STORAGE_URL}${album?.albumImage}`}
                             alt={album?.albumName}
                           />
                         </div>

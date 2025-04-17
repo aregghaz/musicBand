@@ -41,8 +41,9 @@ const HomePageComponent = () => {
         const response = await fetch(`${BASE_URL}/settings`);
         const result = await response.json();
 
-        if (result.data && result.data.length > 0) {
-          const settings = result.data[0];
+        if (result.data && Object.keys(result.data).length > 0) {
+          const settings = result.data;
+
           setData({
             presentationSection: settings.presentationSection,
             socialLinks: settings.socialLinks,

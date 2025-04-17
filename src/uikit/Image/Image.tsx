@@ -11,17 +11,37 @@ interface ICustomImage {
 }
 
 const CustomImage: FC<ICustomImage> = ({ src, alt = '', className = '' }) => {
-  const [imageSrc, setImageSrc] = useState(src ?? ImagePlaceholder);
+  const [imageSrc, setImageSrc] = useState<string | StaticImageData>(
+    ImagePlaceholder
+  );
 
   const handleError = () => {
     setImageSrc(ImagePlaceholder);
   };
 
+  const isInvalidSrc = (value: string | null | undefined) => {
+    if (!value) return true;
+
+    const lowerValue = value.toLowerCase();
+
+    return (
+      lowerValue.includes('null') ||
+      lowerValue.includes('undefined') ||
+      lowerValue.trim() === ''
+    );
+  };
+
   useEffect(() => {
-    if (!src) {
-      handleError();
-    } else {
+    if (typeof src === 'string') {
+      if (isInvalidSrc(src)) {
+        setImageSrc(ImagePlaceholder);
+      } else {
+        setImageSrc(src);
+      }
+    } else if (src) {
       setImageSrc(src);
+    } else {
+      setImageSrc(ImagePlaceholder);
     }
   }, [src]);
 

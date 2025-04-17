@@ -1,7 +1,7 @@
 import React from 'react';
 import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
-import { formatDate } from '@utils/index';
+import { STORAGE_URL, formatDate } from '@utils/index';
 import ImagePlaceholder from '@assets/img/imagePlaceholder.jpg';
 import './NewsSection.scss';
 
@@ -34,7 +34,7 @@ const NewsSection = () => {
                                 <CustomImage
                                   alt={post.title}
                                   className="img-fluid animated"
-                                  src={post.image ?? ImagePlaceholder}
+                                  src={`${STORAGE_URL}${post.image}`}
                                 />
                               </a>
                             </div>
@@ -63,7 +63,7 @@ const NewsSection = () => {
                                 <CustomImage
                                   alt={post.title}
                                   className="img-fluid animated"
-                                  src={post.image ?? ImagePlaceholder}
+                                  src={`${STORAGE_URL}${post.image}`}
                                 />
                               </a>
                             </div>

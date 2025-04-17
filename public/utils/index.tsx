@@ -1,5 +1,6 @@
 export const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
+export const STORAGE_URL = process.env.NEXT_PUBLIC_STORAGE_URL;
 export const formatDate = (isoString: string) => {
   const date = new Date(isoString);
   return date.toLocaleDateString('en-US', {
@@ -28,7 +29,6 @@ export const formatDateToMonthAndDay = (
   // Return month name + day
   return date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
 };
-
 
 export const getYearFromDate = (dateString?: string | null): number | null => {
   if (!dateString) {

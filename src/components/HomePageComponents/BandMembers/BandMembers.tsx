@@ -6,6 +6,7 @@ import SectionTitle from '@uikit/SectionTitle/SectionTitle';
 import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import CustomImage from '@uikit/Image/Image';
 import './BandMembers.scss';
+import { STORAGE_URL } from '@utils/index';
 
 const BandMembers = () => {
   const sliderSettings = {
@@ -49,7 +50,7 @@ const BandMembers = () => {
                     <div key={member.id} className="p-3">
                       <div className="block-member">
                         <CustomImage
-                          src={member.memberImage}
+                          src={`${STORAGE_URL}${member.memberImage}`}
                           alt="member img"
                         />
                         <div className="member-info text-center mt-2">
