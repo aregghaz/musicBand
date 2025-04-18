@@ -13,7 +13,7 @@ const PreSaleSection = () => {
       className="divider overlay"
       endpoint="tour-presale-dates"
       renderData={(data) => {
-        const upcomingSectionData = data?.data[0];
+        const upcomingSectionData = data?.data?.[0];
 
         if (!upcomingSectionData) {
           return (
