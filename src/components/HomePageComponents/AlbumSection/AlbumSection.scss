@@ -6,12 +6,18 @@
   align-items: center;
   gap: 10px;
 
-  @media(max-width:786px){
+  @media (max-width: 786px) {
     justify-content: flex-start;
     margin-top: 10px;
   }
 }
 
+.block-content {
+  max-height: 410px;
+}
+
 .album-image {
   position: static !important;
+  object-fit: cover;
+  aspect-ratio: 2 / 1;
 }
