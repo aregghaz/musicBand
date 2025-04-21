@@ -4,11 +4,12 @@ import './Modal.scss';
 interface IModal {
   children: ReactNode;
   closeModal: () => void;
+  className?: string;
 }
 
-const Modal: FC<IModal> = ({ closeModal, children }) => {
+const Modal: FC<IModal> = ({ closeModal, children, className }) => {
   return (
-    <div className="custom-modal" onClick={closeModal}>
+    <div className={`custom-modal ${className}`} onClick={closeModal}>
       <span className="close-btn" onClick={closeModal}>
         &times;
       </span>

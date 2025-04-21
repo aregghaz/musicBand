@@ -1,129 +1,179 @@
-import React from 'react';
-
-import AlbumBackground from '@assets/img/album/5.jpg';
+'use client';
+import React, { useState } from 'react';
 import Button from '@uikit/Button/Button';
 import './AlbumSection.scss';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
-import Image from 'next/image';
 import CustomImage from '@uikit/Image/Image';
+import LazyLoadSection from '@components/Common/LazyLoadSection/LazyLoadSection';
+import { STORAGE_URL } from '@utils/index';
+import EmbeddedModal from '@components/Common/FrameEmbeddedModal/EmbeddedModal';
 
 const AlbumSection = () => {
-  const albumInfo = {
-    label: 'Limitless',
-    released: 'March 23/3/18',
-    genre: 'Pop/Rock/Techno',
-    styles: 'Revival/Indie Rock',
+  const [openLyricsIndexes, setOpenLyricsIndexes] = useState<number[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentVideoLink, setCurrentVideoLink] = useState('');
+
+  const toggleLyrics = (index: number) => {
+    setOpenLyricsIndexes((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
 
-  const socialLinks = [
-    { icon: 'socicon-apple', link: '#' },
-    { icon: 'socicon-play', link: '#' },
-    { icon: 'socicon-amazon', link: '#' },
-    { icon: 'socicon-soundcloud', link: '#' },
-    { icon: 'socicon-spotify', link: '#' },
-    { icon: 'socicon-youtube', link: '#' },
-  ];
+  const openVideoModal = (videoLink: string) => {
+    setCurrentVideoLink(videoLink);
+    setModalOpen(true);
+  };
 
-  const tracks = [
-    { title: 'Love Alive', album: 'Limitless', mp3: 'mp3/01.mp3' },
-    {
-      title: 'Hope',
-      album: 'Limitless',
-      mp3: 'mp3/01.mp3',
-      lyrics: 'Liberian girl...',
-    },
-    { title: 'Bounce Out', album: 'Limitless', mp3: 'mp3/01.mp3' },
-    { title: 'Girls Are the Same', album: 'Limitless', mp3: 'mp3/01.mp3' },
-    {
-      title: 'My Queen',
-      album: 'Limitless',
-      mp3: 'mp3/01.mp3',
-      lyrics: 'Liberian girl...',
-    },
-    { title: 'Falling Apart', album: 'Limitless', mp3: 'mp3/01.mp3' },
-  ];
+  const closeVideoModal = () => {
+    setCurrentVideoLink('');
+    setModalOpen(false);
+  };
 
   return (
-    <section id="album" className="latest main">
-      <SectionTitle title="Latest album" />
+    <LazyLoadSection
+      id="album"
+      className="latest main"
+      endpoint="latest-album"
+      renderData={(data) => {
+        const latestAlbum = data?.data;
 
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-lg-4 text-center">
-            <ul className="block-album-info">
-              {Object.entries(albumInfo).map(([key, value]) => (
-                <li key={key}>
-                  <h5 className="uppercase list-inline-item">{key}</h5>{' '}
-                  <span>{value}</span>
-                </li>
-              ))}
-            </ul>
-            <ul className="block-social list-inline mt-4">
-              {socialLinks.map((social, index) => (
-                <li key={index} className="list-inline-item mr-0">
-                  <a href={social.link}>
-                    <i className={social.icon}></i>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
+        console.log(latestAlbum,'latestAlbum');
+        
 
-      <div className="container mt-4">
-        <div className="row justify-content-center">
-          <div className="col-lg-8 col-md-10">
-            <div className="block-tracklist">
-              <audio preload="auto" className="album"></audio>
-              <div className="block-content pb-0 text-center">
-                <CustomImage
-                  className="mb-0 album-image"
-                  src={AlbumBackground}
-                  alt="Album Cover"
-                />
+        if (!latestAlbum || (Array.isArray(latestAlbum) && !latestAlbum.length)) return null;
+
+        const albumInfo = {
+          Title: latestAlbum.latestAlbumTitle,
+          Label: latestAlbum.albumLabel,
+          Released: latestAlbum.albumReleased,
+          Genre: latestAlbum.albumGenre,
+          Styles: latestAlbum.albumStyles,
+        };
+
+        const socialLinks = [
+          { icon: 'socicon-amazon', link: latestAlbum.amazonLink },
+          { icon: 'socicon-apple', link: latestAlbum.appleLink },
+          { icon: 'socicon-spotify', link: latestAlbum.spotifyLink },
+          { icon: 'socicon-youtube', link: latestAlbum.youtubeLink },
+        ];
+
+        const tracks = latestAlbum?.songs?.map((song: any) => ({
+          title: song.songTitle,
+          album: latestAlbum.latestAlbumTitle,
+          songLink: song.songLink,
+          lyrics: song.songLyrics,
+        }));
+
+        console.log(tracks, 'trakcs');
+
+        return (
+          <>
+            <SectionTitle title="Latest album" />
+
+            <div className="container">
+              <div className="row justify-content-center">
+                <div className="col-lg-4 text-center">
+                  <ul className="block-album-info">
+                    {Object.entries(albumInfo).map(([key, value]) => (
+                      <li key={key}>
+                        <h5 className="uppercase list-inline-item">{key}</h5>{' '}
+                        <span>{value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <ul className="block-social list-inline mt-4">
+                    {socialLinks.map(
+                      (social, index) =>
+                        social.link && (
+                          <li key={index} className="list-inline-item mr-0">
+                            <a
+                              href={social.link}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <i className={social.icon}></i>
+                            </a>
+                          </li>
+                        )
+                    )}
+                  </ul>
+                </div>
               </div>
-              <ol className="playlist">
-                {tracks.map((track, index) => (
-                  <li key={index}>
-                    <div className="as-link" data-src={track.mp3}>
-                      <div className="row">
-                        <div className="col-md-6">
-                          <h6 className="mb-0 opc-70 uppercase">
-                            {track.title}
-                          </h6>
-                          <span>{track.album}</span>
-                        </div>
-                        <div className="col-md-6 text-md-right album-actions-block">
-                          {track.lyrics ? (
-                            <Button bordered>
-                              <i className="icon-note"></i> Lyrics
-                            </Button>
-                          ) : null}
-                          {/* <a href="#" className="btn btn-primary with-ico">  <i className="icon-download"></i> Download</a> */}
-
-                          <Button className="mr-3">
-                            <i className="icon-download"></i> Download
-                          </Button>
-                        </div>
-                        {track.lyrics && (
-                          <div className="col-12 text-center mt-3">
-                            <h5 className="mb-4 opc-70 uppercase">
-                              {track.title}
-                            </h5>
-                            <p>{track.lyrics}</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ol>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
+            <div className="container mt-4">
+              <div className="row justify-content-center">
+                <div className="col-lg-8 col-md-10">
+                  <div className="block-tracklist">
+                    <div className="block-content pb-0 text-center">
+                      <CustomImage
+                        className="mb-0 album-image"
+                        src={`${STORAGE_URL}${latestAlbum.albumImage}`}
+                        alt="Album Cover"
+                      />
+                    </div>
+                    <ol className="playlist">
+                      {tracks.map((track: any, index: number) => (
+                        <li key={index}>
+                          <div className="as-link">
+                            <div className="row align-items-center">
+                              <div className="col-md-6">
+                                <h6 className="mb-0 opc-70 uppercase">
+                                  {track.title}
+                                </h6>
+                                <span>{track.album}</span>
+                              </div>
+                              <div className="col-md-6 text-md-right album-actions-block d-flex justify-content-end gap-2">
+                                {track.songLink && (
+                                  <Button
+                                    bordered
+                                    onClick={() =>
+                                      openVideoModal(track.songLink)
+                                    }
+                                  >
+                                    <i className="icon-play"></i> Play
+                                  </Button>
+                                )}
+                                {track.lyrics && (
+                                  <Button
+                                    bordered
+                                    onClick={() => toggleLyrics(index)}
+                                  >
+                                    <i className="icon-note"></i> Lyrics
+                                  </Button>
+                                )}
+                              </div>
+
+                              {track.lyrics &&
+                                openLyricsIndexes.includes(index) && (
+                                  <div className="col-12 text-center mt-3">
+                                    <h5 className="mb-4 opc-70 uppercase">
+                                      {track.title}
+                                    </h5>
+                                    <p>{track.lyrics}</p>
+                                  </div>
+                                )}
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Video Modal */}
+            {modalOpen && (
+              <EmbeddedModal
+                closeModal={closeVideoModal}
+                videoLink={currentVideoLink}
+              />
+            )}
+          </>
+        );
+      }}
+    />
   );
 };
 
