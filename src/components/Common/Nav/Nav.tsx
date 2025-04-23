@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, useState } from 'react';
 import { useWindowWidth } from '../../../hooks/useWindowWidth';
 import { useVisibility } from '../../../hooks/useVIsibility';
