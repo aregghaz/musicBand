@@ -37,10 +37,8 @@ const AlbumSection = () => {
       renderData={(data) => {
         const latestAlbum = data?.data;
 
-        console.log(latestAlbum,'latestAlbum');
-        
-
-        if (!latestAlbum || (Array.isArray(latestAlbum) && !latestAlbum.length)) return null;
+        if (!latestAlbum || (Array.isArray(latestAlbum) && !latestAlbum.length))
+          return null;
 
         const albumInfo = {
           Title: latestAlbum.latestAlbumTitle,
@@ -63,8 +61,6 @@ const AlbumSection = () => {
           songLink: song.songLink,
           lyrics: song.songLyrics,
         }));
-
-        console.log(tracks, 'trakcs');
 
         return (
           <>

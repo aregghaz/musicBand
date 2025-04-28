@@ -6,6 +6,7 @@ import ImagePlaceholder from '@assets/img/imagePlaceholder.jpg';
 import './NewsSection.scss';
 
 import CustomImage from '@uikit/Image/Image';
+import Link from 'next/link';
 
 const NewsSection = () => {
   return (
@@ -48,7 +49,7 @@ const NewsSection = () => {
                               <p className="lead">{post.description}</p>
                               <a
                                 href={post.link}
-                                className="link colored-link mt-3"
+                                className="link colored-link mt-3 cursor-pointer"
                               >
                                 Read more ›
                               </a>
@@ -90,9 +91,12 @@ const NewsSection = () => {
               </ul>
 
               <div className="block-content text-center">
-                <a className="btn btn-primary with-ico uppercase mt-5" href="#">
+                <Link
+                  className="btn btn-primary with-ico uppercase mt-5"
+                  href="/blogs"
+                >
                   View all blog posts
-                </a>
+                </Link>
               </div>
             </div>
           </>

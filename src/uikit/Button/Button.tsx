@@ -5,21 +5,20 @@ interface IButton {
   children?: ReactNode;
   bordered?: boolean;
   className?: string;
-  onClick?:()=> void;
+  onClick?: () => void;
 }
 
 const Button: FC<IButton> = ({
   children,
   bordered = false,
   className = '',
-  onClick
+  onClick,
 }) => {
   return (
     <button
       className={`btn-s uppercase btn btn-primary with-ico  ${
         bordered ? 'border-2' : ''
       } ${className} `}
-
       onClick={onClick}
     >
       {children}
