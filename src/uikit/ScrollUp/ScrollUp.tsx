@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import './ScrollUp.scss';
 import { useVisibility } from '../../hooks/useVIsibility';

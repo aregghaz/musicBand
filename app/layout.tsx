@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import './styles/globals.scss';
 import Footer from '@components/Common/Footer/Footer';
 import HeroSection from '@components/HomePageComponents/HeroSection/HeroSection';
+import ScrollUp from '@uikit/ScrollUp/ScrollUp';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Footer />
+        <ScrollUp />
       </body>
     </html>
   );

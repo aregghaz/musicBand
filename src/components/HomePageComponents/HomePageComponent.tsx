@@ -120,10 +120,6 @@ const HomePageComponent = () => {
       <TwitterSection />
 
       <ContactSection socialLinks={data.socialLinks} />
-
-      <Footer />
-
-      <ScrollUp />
     </div>
   );
 };
