@@ -5,6 +5,9 @@
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 12px;
+    @media (max-width: 991px) {
+      max-height: 100%;
+    }
   }
 }
 
@@ -22,12 +25,12 @@
 
   .member-image {
     flex-shrink: 0;
-    width: 240px;
-    height: 240px;
+    width: 265px;
+    height: 265px;
 
     @media (max-width: 768px) {
       width: 100%;
-      height: auto;
+      height: 265px;
     }
 
     img {
@@ -47,7 +50,9 @@
   .member-details-wrapper {
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
     gap: 24px;
+    padding: 0 38px;
     @media (max-width: 768px) {
       flex-direction: column;
       padding: 16px;
@@ -62,6 +67,7 @@
 
     .member-name {
       font-size: 24px !important;
+      line-height: 2.5rem !important;
       font-weight: bold;
       color: #c2bebe;
       @media (max-width: 568px) {
@@ -72,7 +78,7 @@
     .member-role {
       font-size: 18px;
       color: #a9a9a9;
-      margin-bottom: 4px;
+      margin-bottom: 0 !important;
     }
 
     .member-country {
@@ -84,11 +90,26 @@
         color: #d0343a;
       }
     }
+    .member-description-wrapper {
+      height: 168px;
+      overflow: auto;
+    }
+
+    .member-description-wrapper::-webkit-scrollbar {
+      background: #05090d;
+      width: 3px;
+    }
+
+    .member-description-wrapper::-webkit-scrollbar-thumb {
+      background: #d0343a;
+      width: 3px;
+    }
 
     .member-description {
-      margin-top: 12px;
+      // margin-top: 12px;
       font-size: 15px;
       line-height: 1.6;
+
       color: #e0e0e0;
       @media (max-width: 768px) {
         margin-top: 27px;
@@ -136,7 +157,7 @@
     margin-left: unset !important;
     margin-right: unset !important;
   }
-  
+
   @media (max-width: 768px) {
     .slick-slider {
       .slick-prev {
@@ -154,6 +175,7 @@
 }
 
 .band-member-gallery {
+  padding-top: 16px;
   h4 {
     text-align: center;
   }

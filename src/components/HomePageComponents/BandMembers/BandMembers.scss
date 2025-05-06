@@ -6,15 +6,14 @@
   img {
     position: static !important;
     border-radius: 12px;
-    // aspect-ratio: 0.75;
+    aspect-ratio: 0.75;
   }
 
-  &:hover{
+  &:hover {
     opacity: 0.8;
     transition: opacity 0.2s ease-in-out;
   }
 }
-
 
 .member-info {
   border-radius: 0 0 12px 12px;
