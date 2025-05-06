@@ -1,12 +1,33 @@
 import React, { FC } from 'react';
 import './ContactSection.scss';
 import LazyLoadSection from '@components/Common/LazyLoadSection/LazyLoadSection';
+import { isValidEmail, isValidPhone } from '@utils/index';
+import Link from 'next/link';
+import SectionTitle from '@uikit/SectionTitle/SectionTitle';
 
 interface IContactSection {
   socialLinks: { [key: string]: string };
 }
 
 const ContactSection: FC<IContactSection> = ({ socialLinks }) => {
+  const renderPhone = (phone: string | null) => {
+    const cleanedPhone = phone?.replace(/[^\d+]/g, '');
+
+    if (isValidPhone(cleanedPhone as string | null)) {
+      return <Link href={`tel:${cleanedPhone}`}>T {phone}</Link>;
+    } else {
+      return `T ${phone}`;
+    }
+  };
+
+  const renderEmail = (email: string | null) => {
+    if (isValidEmail(email)) {
+      return <Link href={`mailto:${email}`}>{email}</Link>;
+    } else {
+      return email;
+    }
+  };
+
   return (
     <LazyLoadSection
       id="contact"
@@ -27,17 +48,7 @@ const ContactSection: FC<IContactSection> = ({ socialLinks }) => {
 
         return (
           <section id="contact" className="contact main">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-12 col-md-10 col-lg-9">
-                  <div className="block-content gap-one-bottom-md text-center">
-                    <div className="block-title">
-                      <h1 className="uppercase">Stay in touch</h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <SectionTitle title='Stay in touch' />
 
             <div className="container">
               <div className="row justify-content-center">
@@ -53,9 +64,10 @@ const ContactSection: FC<IContactSection> = ({ socialLinks }) => {
                                 <em className="uppercase h5 opc-70">
                                   {contact.name} {contact.surname}
                                 </em>
-                                T {contact.phone}
+
+                                {renderPhone(contact?.phone)}
                                 <br />
-                                {contact.email}
+                                {renderEmail(contact?.email)}
                               </p>
                             </div>
                           </div>

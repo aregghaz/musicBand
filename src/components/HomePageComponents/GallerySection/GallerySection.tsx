@@ -59,7 +59,7 @@ const GallerySection = () => {
                         onClick={() => openModal(item.galleryImage)}
                       >
                         <CustomImage
-                          className="animated"
+                          className="scaled"
                           alt={`Gallery Image ${index + 1}`}
                           src={`${STORAGE_URL}${item.galleryImage}`}
                         />

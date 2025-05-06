@@ -5,6 +5,7 @@ export const sliderSettings = {
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
+  centerMode: false,
   responsive: [
     {
       breakpoint: 1024,

@@ -5,7 +5,36 @@
 
 .image-container {
   cursor: pointer;
+  border-radius: 12px !important;
+  height: 100%;
   img {
+
+    border-radius: 12px !important;
     position: static !important;
+  }
+
+  .scaled{
+    transform: scale(.98);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    .scaled{
+      transform: scale(1);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  @media (max-width:991px) {
+    .scaled{
+      transform: scale(1);
+      transition: unset;
+    }
+    &:hover {
+      .scaled{
+        transform: scale(1);
+        transition: unset;
+      }
+    }
   }
 }

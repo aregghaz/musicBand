@@ -12,12 +12,19 @@
   }
 }
 
-.block-content {
-  max-height: 410px;
+.block-tracklist {
+  .block-content {
+    max-height: 410px;
+    border-radius: 12px 12px 0 0;
+    img {
+      border-radius: 12px 12px 0 0;
+    }
+  }
 }
+
+
 
 .album-image {
   position: static !important;
   object-fit: cover;
-  aspect-ratio: 2 / 1;
 }
