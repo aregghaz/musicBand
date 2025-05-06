@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import './ImageModal.scss';
 import CustomImage from '@uikit/Image/Image';
 import { STORAGE_URL } from '@utils/index';
+import { useDisableScroll } from 'src/hooks/useDisableScroll';
 
 interface IImageModal {
   selectedImage?: any;
@@ -9,6 +10,8 @@ interface IImageModal {
 }
 
 const ImageModal: FC<IImageModal> = ({ selectedImage, closeModal }) => {
+  useDisableScroll();
+
   return (
     selectedImage && (
       <div className="image-modal" onClick={closeModal}>

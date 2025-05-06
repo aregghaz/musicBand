@@ -77,7 +77,9 @@ const MemberInfoModal: FC<IMemberInfoModal> = ({ member, closeModal }) => {
               ''
             )}
 
-            <p className="member-description">{member.description}</p>
+            <div className="member-description-wrapper">
+              <p className="member-description">{member.description}</p>
+            </div>
           </div>
         </div>
 

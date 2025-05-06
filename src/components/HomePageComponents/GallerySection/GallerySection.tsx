@@ -76,7 +76,12 @@ const GallerySection = () => {
               </div>
             </div>
 
-            <ImageModal closeModal={closeModal} selectedImage={selectedImage} />
+            {selectedImage && (
+              <ImageModal
+                closeModal={closeModal}
+                selectedImage={selectedImage}
+              />
+            )}
           </>
         );
       }}
