@@ -82,10 +82,9 @@ const HeroSection: FC<IHeroSection> = ({ sliders }) => {
     <section className="hero">
       {finalSliders && (
         <Slider {...settings} className="main-slider">
-        {finalSliders.map((slider, index) => {
-            
+          {finalSliders.map((slider, index) => {
             const imageSource =
-            windowWith < 475 && slider?.sliderImageMob
+              windowWith < 475 && slider?.sliderImageMob
                 ? `${STORAGE_URL}${slider?.sliderImageMob}`
                 : `${STORAGE_URL}${slider.sliderImage}`;
 
@@ -96,10 +95,7 @@ const HeroSection: FC<IHeroSection> = ({ sliders }) => {
                     index === activeIndex ? 'zoom' : ''
                   }`}
                 >
-                  <CustomImage
-                    src={imageSource}
-                    alt={slider.sliderTitle}
-                  />
+                  <CustomImage src={imageSource} alt={slider.sliderTitle} />
                 </div>
                 <div className="container hero-content">
                   <div className="row">

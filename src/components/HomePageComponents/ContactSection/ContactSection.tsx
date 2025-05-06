@@ -48,7 +48,7 @@ const ContactSection: FC<IContactSection> = ({ socialLinks }) => {
 
         return (
           <section id="contact" className="contact main">
-            <SectionTitle title='Stay in touch' />
+            <SectionTitle title="Stay in touch" />
 
             <div className="container">
               <div className="row justify-content-center">
