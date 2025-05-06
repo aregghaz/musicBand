@@ -1,5 +1,13 @@
 .inner-hero {
-     .btn-primary {
-        border-color: transparent !important;
-     }
+  .btn-primary {
+    border-color: transparent !important;
+  }
+}
+.popup-youtube {
+  span {
+    transition: transform 0.3s ease-in-out !important;
+    &:hover {
+      transition: transform 0.3s ease-in-out !important;
+    }
+  }
 }

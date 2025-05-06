@@ -11,6 +11,7 @@ import Button from '@uikit/Button/Button';
 import CustomImage from '@uikit/Image/Image';
 import './HeroSection.scss';
 import { STORAGE_URL } from '@utils/index';
+import EmbeddedModal from '@components/Common/FrameEmbeddedModal/EmbeddedModal';
 
 const defaultSlides = [
   {
@@ -42,6 +43,19 @@ interface IHeroSection {
 }
 const HeroSection: FC<IHeroSection> = ({ sliders }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const [openModal, setModalOpen] = useState(false);
+  const [currentVideoLink, setCurrentVideoLink] = useState('');
+
+  const openVideoModal = (videoLink: string) => {
+    setCurrentVideoLink(videoLink);
+    setModalOpen(true);
+  };
+
+  const closeVideoModal = () => {
+    setCurrentVideoLink('');
+    setModalOpen(false);
+  };
 
   const settings = {
     dots: true,
@@ -91,7 +105,11 @@ const HeroSection: FC<IHeroSection> = ({ sliders }) => {
                       </h5>
                       {/* {index === 0 && <div className="front-rect"></div>} */}
                       {slider.sliderVideoLink && (
-                        <Button>
+                        <Button
+                          onClick={() =>
+                            openVideoModal(slider?.sliderVideoLink as string)
+                          }
+                        >
                           <a className="video-play-but popup-youtube"></a>
                         </Button>
                       )}
@@ -105,6 +123,12 @@ const HeroSection: FC<IHeroSection> = ({ sliders }) => {
       )}
 
       <Nav navItems={navigationItems} />
+      {openModal && (
+        <EmbeddedModal
+          closeModal={closeVideoModal}
+          videoLink={currentVideoLink}
+        />
+      )}
     </section>
   );
 };

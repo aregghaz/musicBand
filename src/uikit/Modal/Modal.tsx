@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import './Modal.scss';
+import { useDisableScroll } from 'src/hooks/useDisableScroll';
 
 interface IModal {
   children: ReactNode;
@@ -8,6 +9,8 @@ interface IModal {
 }
 
 const Modal: FC<IModal> = ({ closeModal, children, className }) => {
+  useDisableScroll();
+
   return (
     <div className={`custom-modal ${className}`} onClick={closeModal}>
       <span className="close-btn" onClick={closeModal}>
