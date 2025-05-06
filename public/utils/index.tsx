@@ -38,3 +38,14 @@ export const getYearFromDate = (dateString?: string | null): number | null => {
   const date = new Date(dateString);
   return isNaN(date.getTime()) ? null : date.getFullYear();
 };
+
+export const isValidPhone = (phone: string | null) => {
+  return (
+    typeof phone === 'string' &&
+    /^\+\d{7,15}$/.test(phone.replace(/[^\d+]/g, ''))
+  );
+};
+
+export const isValidEmail = (email: string | null) => {
+  return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+};

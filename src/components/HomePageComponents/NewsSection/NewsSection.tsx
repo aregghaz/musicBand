@@ -34,7 +34,7 @@ const NewsSection = () => {
                               <a href={post.link}>
                                 <CustomImage
                                   alt={post.title}
-                                  className="img-fluid animated"
+                                  className="img-fluid scaled"
                                   src={`${STORAGE_URL}${post.image}`}
                                 />
                               </a>
@@ -63,7 +63,7 @@ const NewsSection = () => {
                               <a href={post.link}>
                                 <CustomImage
                                   alt={post.title}
-                                  className="img-fluid animated"
+                                  className="img-fluid scaled"
                                   src={`${STORAGE_URL}${post.image}`}
                                 />
                               </a>

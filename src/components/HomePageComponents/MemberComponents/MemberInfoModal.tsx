@@ -36,9 +36,12 @@ const MemberInfoModal: FC<IMemberInfoModal> = ({ member, closeModal }) => {
               {member.firstName} {member.lastName}
             </h2>
             <p className="member-role">{member.role}</p>
-            <p className="member-country">
-              <strong>Country:</strong> {member.country}
-            </p>
+
+            {member.country && (
+              <p className="member-country">
+                <strong>Country:</strong> {member.country}
+              </p>
+            )}
 
             {hasAnyLink ? (
               <ul className="block-social list-inline mb-md-3 mt-3">

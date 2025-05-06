@@ -60,7 +60,7 @@ const Discography = () => {
                         </a>
                         <div className="album-image-wrapper">
                           <CustomImage
-                            className="animated"
+                            className="scaled"
                             src={`${STORAGE_URL}${album?.albumImage}`}
                             alt={album?.albumName}
                           />
