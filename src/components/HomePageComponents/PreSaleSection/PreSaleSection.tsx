@@ -11,9 +11,6 @@ interface IPreSaleSection {
 }
 
 const PreSaleSection: FC<IPreSaleSection> = ({ upcomingSectionData }) => {
-
-  console.log(upcomingSectionData,'upcomingSectionData');
-  
   if (!upcomingSectionData) {
     return (
       <div className="background-img divider-background">
