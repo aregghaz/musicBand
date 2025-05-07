@@ -2,8 +2,9 @@
 
 import { FC } from 'react';
 import './BlogCard.scss';
-import { STORAGE_URL } from '@utils/index';
+import { STORAGE_URL, formatDate } from '@utils/index';
 import CustomImage from '@uikit/Image/Image';
+import Link from 'next/link';
 
 interface IBlog {
   blog: {
@@ -12,11 +13,12 @@ interface IBlog {
     description: string;
     image: string;
     link?: string;
+    id: number;
   };
 }
 
 const BlogCard: FC<IBlog> = ({ blog }) => {
-  const { createdAt, title, description, image, link = '#' } = blog;
+  const { createdAt, title, description, image, id } = blog;
 
   return (
     <div className="blog-card">
@@ -28,20 +30,16 @@ const BlogCard: FC<IBlog> = ({ blog }) => {
         />
       </div>
       <div className="blog-content">
-        <span className="blog-date">
-          {new Date(createdAt).toLocaleDateString()}
-        </span>
+        <span className="blog-date">{formatDate(createdAt)}</span>
         <h3 className="blog-title">{title}</h3>
         <p className="blog-description">{description}</p>
       </div>
-      <a
-        href={link}
+      <Link
+        href={`/blogs/${id}`}
         className="read-more link colored-link cursor-pointer"
-        target="_blank"
-        rel="noopener noreferrer"
       >
         Read more →
-      </a>
+      </Link>
     </div>
   );
 };

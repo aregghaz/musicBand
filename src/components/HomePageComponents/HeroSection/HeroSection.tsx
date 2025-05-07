@@ -22,17 +22,6 @@ const defaultSlides = [
   },
 ];
 
-const navigationItems = [
-  'Home',
-  'About',
-  'Discography',
-  'Band',
-  'Tours',
-  'Gallery',
-  'News',
-  'Contact',
-];
-
 interface IHeroSection {
   sliders: Array<{
     sliderTitle: string;
@@ -126,7 +115,6 @@ const HeroSection: FC<IHeroSection> = ({ sliders }) => {
         </Slider>
       )}
 
-      <Nav navItems={navigationItems} />
       {openModal && (
         <EmbeddedModal
           closeModal={closeVideoModal}
