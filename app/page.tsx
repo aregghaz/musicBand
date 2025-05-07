@@ -1,5 +1,6 @@
 import React from 'react';
 import HomePageComponent from '@components/HomePageComponents/HomePageComponent';
+import { BASE_URL } from '@utils/index';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -11,7 +12,13 @@ export const metadata = {
 };
 
 const HomePage = async () => {
-  return <HomePageComponent />;
+  const res = await fetch(`${BASE_URL}/home-data`, {
+    cache: 'no-store',
+  });
+
+  const homeData = await res.json();
+
+  return <HomePageComponent data={homeData?.data} />;
 };
 
 export default HomePage;
