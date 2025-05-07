@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "PORT=3050 next start"
+    "start": "next start"
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
