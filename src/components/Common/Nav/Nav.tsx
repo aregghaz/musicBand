@@ -10,9 +10,10 @@ import CustomImage from '@uikit/Image/Image';
 import logoLight from '@assets/img/logoLight.png';
 
 import logoDark from '@assets/img/logoDark.png';
+import Image from 'next/image';
 
 interface INav {
-  navItems: string[];
+  navItems: { [name: string]: string }[];
 }
 
 const Nav: FC<INav> = ({ navItems }) => {
@@ -41,7 +42,7 @@ const Nav: FC<INav> = ({ navItems }) => {
     >
       <div className="left-part">
         <Link className="logo scroll" href={'/'}>
-          <CustomImage src={logo} />
+          <Image src={logo} alt="Music Lab" />
         </Link>
       </div>
       <div className="right-part">
@@ -60,12 +61,9 @@ const Nav: FC<INav> = ({ navItems }) => {
           >
             {navItems.map((item, idx) => (
               <li key={idx}>
-                <a
-                  className="scroll list-inline-item"
-                  href={`#${item.toLowerCase()}`}
-                >
-                  {item}
-                </a>
+                <Link className="scroll list-inline-item" href={`${item.link}`}>
+                  {item.label}
+                </Link>
               </li>
             ))}
             <li className="block-helper">

@@ -1,6 +1,38 @@
 export const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const STORAGE_URL = process.env.NEXT_PUBLIC_STORAGE_URL;
+
+export const navigationItems = [
+  {
+    label: 'Home',
+    link: '/#',
+  },
+  {
+    label: 'About',
+    link: '/#about',
+  },
+  {
+    label: 'Discography',
+    link: '/#discography',
+  },
+  {
+    label: 'Tours',
+    link: '/#tours',
+  },
+  {
+    label: 'Gallery',
+    link: '/#gallery',
+  },
+  {
+    label: 'News',
+    link: '/#news',
+  },
+  {
+    label: 'Contact',
+    link: '/#contact',
+  },
+];
+
 export const formatDate = (isoString: string) => {
   const date = new Date(isoString);
   return date.toLocaleDateString('en-US', {

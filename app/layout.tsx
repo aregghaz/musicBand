@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
 import './styles/globals.scss';
 import Footer from '@components/Common/Footer/Footer';
-import HeroSection from '@components/HomePageComponents/HeroSection/HeroSection';
 import ScrollUp from '@uikit/ScrollUp/ScrollUp';
+import Nav from '@components/Common/Nav/Nav';
+import { navigationItems } from '@utils/index';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <meta charSet="UTF-8" />
       </head>
       <body>
+        <Nav navItems={navigationItems} />
         {children}
         <Footer />
         <ScrollUp />

@@ -1,52 +1,17 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { BASE_URL } from '@utils/index';
+import React, { FC } from 'react';
+
 import './BlogComponent.scss';
 import BlogCard from './BlogCard/BlogCard';
-import Nav from '@components/Common/Nav/Nav';
 
-export const metadata = {
-  title: 'Blog',
-  openGraph: {
-    title: 'Blog',
-  },
-};
+interface IBlogComponent {
+  blogs: any;
+}
 
-const navigationItems = [
-  'Home',
-  'About',
-  'Discography',
-  'Band',
-  'Tours',
-  'Gallery',
-  'News',
-  'Contact',
-];
-
-const BlogComponent = () => {
-  const [blogs, setBlogs] = useState<any>([]);
-
-  useEffect(() => {
-    const fetchSettingsData = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}/blogs`);
-        const result = await response.json();
-
-        if (result.data && Object.keys(result.data).length > 0) {
-          setBlogs(result.data);
-        }
-      } catch (error) {
-        console.error('Error fetching blogs:', error);
-      }
-    };
-
-    fetchSettingsData();
-  }, []);
-
+const BlogComponent: FC<IBlogComponent> = ({ blogs }: any) => {
   return (
     <section className="blog-wrapper">
-      <Nav navItems={navigationItems} />
       <div className="blog-header">
         <h1>Our Blog</h1>
         <p>

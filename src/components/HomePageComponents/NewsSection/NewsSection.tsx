@@ -31,13 +31,13 @@ const NewsSection = () => {
                         <>
                           <div className="col-12 col-md-6 order-md-2 blog-image-content-wrapper">
                             <div className="block-content ">
-                              <a href={post.link}>
-                                <CustomImage
-                                  alt={post.title}
-                                  className="img-fluid scaled"
-                                  src={`${STORAGE_URL}${post.image}`}
-                                />
-                              </a>
+                              {/* <a href={post.link}> */}
+                              <CustomImage
+                                alt={post.title}
+                                className="img-fluid scaled"
+                                src={`${STORAGE_URL}${post.image}`}
+                              />
+                              {/* </a> */}
                             </div>
                           </div>
                           <div className="col-12 col-md-6 col-lg-5 order-md-1 text-left blog-content-wrapper">
@@ -47,12 +47,12 @@ const NewsSection = () => {
                               </span>
                               <h2>{post.title}</h2>
                               <p className="lead">{post.description}</p>
-                              <a
-                                href={post.link}
+                              <Link
+                                href={`/blogs/${post.id}`}
                                 className="link colored-link mt-3 cursor-pointer"
                               >
                                 Read more ›
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </>
@@ -60,13 +60,13 @@ const NewsSection = () => {
                         <>
                           <div className="col-12 col-md-6 order-1 blog-image-content-wrapper">
                             <div className="block-content">
-                              <a href={post.link}>
-                                <CustomImage
-                                  alt={post.title}
-                                  className="img-fluid scaled"
-                                  src={`${STORAGE_URL}${post.image}`}
-                                />
-                              </a>
+                              {/* <a href={post.link}> */}
+                              <CustomImage
+                                alt={post.title}
+                                className="img-fluid scaled"
+                                src={`${STORAGE_URL}${post.image}`}
+                              />
+                              {/* </a> */}
                             </div>
                           </div>
                           <div className="col-12 col-md-6 col-lg-5 order-2 text-left blog-content-wrapper">
@@ -76,12 +76,12 @@ const NewsSection = () => {
                               </span>
                               <h2>{post.title}</h2>
                               <p className="lead">{post.description}</p>
-                              <a
-                                href={post.link}
+                              <Link
+                                href={`/blogs/${post.id}`}
                                 className="link colored-link mt-3"
                               >
                                 Read more ›
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </>
