@@ -51,7 +51,7 @@ const ContactSection: FC<IContactSection> = ({ contacts, socialLinks }) => {
                   filteredContacts.map((contact: any, index: number) => (
                     <li key={index} className="col-md-6 col-lg-4">
                       <div className="card text-center stay-in-toch-card">
-                        <div className="card-body">
+                        <div className="">
                           <h2 className="uppercase">{contact.type}</h2>
                           <p className="mb-0">
                             <em className="uppercase h5 opc-70">

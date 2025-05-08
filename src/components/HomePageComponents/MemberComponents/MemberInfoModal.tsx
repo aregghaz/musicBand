@@ -19,8 +19,6 @@ const MemberInfoModal: FC<IMemberInfoModal> = ({ member, closeModal }) => {
     member.wikipediaLink ||
     member.youtubeLink;
 
-  console.log(member?.memberImages);
-
   return (
     <Modal closeModal={closeModal} className="member-modal-wrapper">
       <div className="member-info-modal">

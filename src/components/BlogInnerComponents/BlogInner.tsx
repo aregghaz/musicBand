@@ -17,9 +17,6 @@ interface IBlog {
 
 const BlogInner: FC<IBlog> = ({ blog }) => {
   const { createdAt, title, description, image } = blog;
-  const router = useRouter();
-
-  console.log(blog, 'blog');
 
   return (
     <div className="blog-inner-page">

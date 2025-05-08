@@ -14,7 +14,8 @@ export default function Layout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <Nav navItems={navigationItems} />
-        {children}
+        <main>{children}</main>
+
         <Footer />
         <ScrollUp />
       </body>

@@ -12,31 +12,31 @@
     height: 100%;
     position: static !important;
     border-radius: 12px;
-    // object-fit: cover;
+    object-fit: cover;
     @media (max-width: 991px) {
       transform: unset;
     }
   }
 
-  .scaled{
-    transform: scale(.98);
+  .scaled {
+    transform: scale(0.98);
     transition: transform 0.3s ease-in-out;
   }
 
   &:hover {
-    .scaled{
+    .scaled {
       transform: scale(1);
       transition: transform 0.3s ease-in-out;
     }
   }
 
-  @media (max-width:991px) {
-    .scaled{
+  @media (max-width: 991px) {
+    .scaled {
       transform: scale(1);
       transition: unset;
     }
     &:hover {
-      .scaled{
+      .scaled {
         transform: scale(1);
         transition: unset;
       }
@@ -44,11 +44,10 @@
   }
 }
 
-.discography-title{
-  @media (max-width:768px) {
-    h2{
-      font-size: 1.9rem !important;
-    }
-  }
-}
-
+// .discography-title{
+//   @media (max-width:768px) {
+//     h2{
+//       font-size: 1.9rem !important;
+//     }
+//   }
+// }

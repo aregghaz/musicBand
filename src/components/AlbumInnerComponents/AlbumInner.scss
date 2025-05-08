@@ -1,0 +1,35 @@
+.album-actions-block {
+  display: flex;
+  flex-direction: row;
+  height: max-content;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 786px) {
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+}
+
+.block-tracklist {
+  h5 {
+    @media (max-width: 768px) {
+      margin-bottom: 1em !important;
+    }
+  }
+
+  .block-content {
+    max-height: 410px;
+    border-radius: 12px 12px 0 0;
+    img {
+      border-radius: 12px 12px 0 0;
+      position: static !important;
+    }
+  }
+}
+
+.album-image {
+  position: static !important;
+  object-fit: cover;
+}

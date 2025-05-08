@@ -28,7 +28,7 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-8 col-md-10">
-              <ul className="block-tabs list-inline gap-one-bottom-sm text-center">
+              <ul className="block-tabs list-inline gap-one-bottom-sm text-center tour-switchers">
                 <li
                   className={`list-inline-item ${
                     activeTab === '1' ? 'active' : ''
@@ -130,7 +130,7 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
             <div className="col-12 col-lg-8 col-md-10">
               <div className="block-content gap-one-top-sm">
                 <div className="card border-dashed">
-                  <div className="card-body p-5 block-subscribe">
+                  <div className="card-body  block-subscribe">
                     <p className="uppercase text-center mb-4">
                       Subscribe for free downloads and <br /> band news updates
                     </p>

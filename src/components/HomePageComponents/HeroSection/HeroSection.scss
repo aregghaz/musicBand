@@ -2,6 +2,18 @@
   .btn-primary {
     border-color: transparent !important;
   }
+
+  @media (max-width: 576px) {
+    h1 {
+      line-height: 32px !important;
+      font-size: 1.775rem !important;
+    }
+
+    h5 {
+      line-height: 32px !important;
+      font-size: 0.875rem !important;
+    }
+  }
 }
 .popup-youtube {
   span {
