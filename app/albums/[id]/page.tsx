@@ -3,12 +3,7 @@ import { BASE_URL, STORAGE_URL } from '@utils/index';
 import { notFound } from 'next/navigation';
 
 interface Album {
-  data: {
-    createdAt: string;
-    title: string;
-    description: string;
-    image: string;
-  };
+  data: any;
 }
 
 export async function generateMetadata({ params }: any): Promise<any> {

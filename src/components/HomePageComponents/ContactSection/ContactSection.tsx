@@ -46,7 +46,7 @@ const ContactSection: FC<IContactSection> = ({ contacts, socialLinks }) => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              <ul className="feature-list feature-list-sm text-center row">
+              <ul className="feature-list feature-list-sm text-center">
                 {filteredContacts &&
                   filteredContacts.map((contact: any, index: number) => (
                     <li key={index} className="col-md-6 col-lg-4">
