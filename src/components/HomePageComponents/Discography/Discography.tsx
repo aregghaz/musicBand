@@ -7,6 +7,7 @@ import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import CustomImage from '@uikit/Image/Image';
 import './Discography.scss';
 import { STORAGE_URL } from '@utils/index';
+import Link from 'next/link';
 
 interface IDiscography {
   albums: any;
@@ -47,9 +48,12 @@ const Discography: FC<IDiscography> = ({ albums }) => {
                 <div key={index} className="px-3">
                   <div className="block-album block-content">
                     <h5 className="mb-0 opc-70 uppercase">{album.albumName}</h5>
-                    <a className="link colored-link" href="album-single.html">
+                    <Link
+                      className="link colored-link"
+                      href={`/albums/${album.id}`}
+                    >
                       View Album ›
-                    </a>
+                    </Link>
                     <div className="album-image-wrapper">
                       <CustomImage
                         className="scaled"

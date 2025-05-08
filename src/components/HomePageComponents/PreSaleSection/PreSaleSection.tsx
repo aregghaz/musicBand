@@ -3,7 +3,6 @@ import BackgroundImage from '@assets/img/25.jpg';
 import Button from '@uikit/Button/Button';
 import './PreSale.scss';
 import CustomImage from '@uikit/Image/Image';
-import LazyLoadSection from '@components/Common/LazyLoadSection/LazyLoadSection';
 import { formatDateToMonthAndDay } from '@utils/index';
 
 interface IPreSaleSection {
@@ -13,9 +12,11 @@ interface IPreSaleSection {
 const PreSaleSection: FC<IPreSaleSection> = ({ upcomingSectionData }) => {
   if (!upcomingSectionData) {
     return (
-      <div className="background-img divider-background">
-        <CustomImage src={BackgroundImage} alt="Background" />
-      </div>
+      <section id="upcoming-tour-present-section" className="divider overlay">
+        <div className="background-img divider-background">
+          <CustomImage src={BackgroundImage} alt="Background" />
+        </div>
+      </section>
     );
   }
 
@@ -30,7 +31,7 @@ const PreSaleSection: FC<IPreSaleSection> = ({ upcomingSectionData }) => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-lg-10">
-            <div className="block-content text-center front-p">
+            <div className="block-content text-center front-p section-tour-content">
               <h2 className="uppercase">PRE-SALE OF &apos;{title}&apos;</h2>
 
               <div className="block-presale mt-5">

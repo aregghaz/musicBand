@@ -1,8 +1,6 @@
 'use client';
 
-import React, { FC, useEffect, useState } from 'react';
-import ScrollUp from '@uikit/ScrollUp/ScrollUp';
-import Footer from '@components/Common/Footer/Footer';
+import React, { FC } from 'react';
 import AboutSection from '@components/HomePageComponents/AboutSection/AboutSection';
 import AlbumSection from '@components/HomePageComponents/AlbumSection/AlbumSection';
 import BandMembers from '@components/HomePageComponents/BandMembers/BandMembers';
