@@ -23,8 +23,8 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
 
   return (
     <>
-      <section id="tours" className="tour main">
-        <SectionTitle title="Upcoming tours" />
+      <section id="concerts" className="tour main">
+        <SectionTitle title="Upcoming Concerts" />
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-8 col-md-10">

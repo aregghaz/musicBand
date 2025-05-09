@@ -22,7 +22,7 @@ const Nav: FC<INav> = ({ navItems }) => {
 
   const { width: windowWith } = useWindowWidth();
 
-  const hamdleOpenMenu = () => {
+  const hamdleToggleMenu = () => {
     setIsOpenedMenu(!isOpenedMenu);
   };
 
@@ -48,7 +48,7 @@ const Nav: FC<INav> = ({ navItems }) => {
       <div className="right-part">
         <nav className="main-nav">
           <div className={`toggle-mobile-but ${isOpenedMenu ? 'active' : ''}`}>
-            <span className="mobile-but" onClick={hamdleOpenMenu}>
+            <span className="mobile-but" onClick={hamdleToggleMenu}>
               <div className="lines"></div>
             </span>
           </div>
@@ -60,7 +60,7 @@ const Nav: FC<INav> = ({ navItems }) => {
             }}
           >
             {navItems.map((item, idx) => (
-              <li key={idx}>
+              <li key={idx} onClick={hamdleToggleMenu}>
                 <Link className="scroll list-inline-item" href={`${item.link}`}>
                   {item.label}
                 </Link>
@@ -72,11 +72,6 @@ const Nav: FC<INav> = ({ navItems }) => {
                   <i className="icon-cd-2"></i>
                 </span>
               </a>
-            </li>
-            <li className="block-helper">
-              <span className="icon search-ico">
-                <i className="icon-search"></i>
-              </span>
             </li>
           </ul>
         </nav>

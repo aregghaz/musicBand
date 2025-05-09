@@ -16,8 +16,8 @@ export const navigationItems = [
     link: '/#discography',
   },
   {
-    label: 'Tours',
-    link: '/#tours',
+    label: 'Concerts',
+    link: '/#concerts',
   },
   {
     label: 'Gallery',
