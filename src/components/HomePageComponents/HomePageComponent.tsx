@@ -27,6 +27,9 @@ interface IHomePageComponent {
 }
 
 const HomePageComponent: FC<IHomePageComponent> = ({ data }) => {
+
+  console.log(data,'data');
+  
   return (
     <div className="wrapper">
       <HeroSection sliders={data.sliders} />
@@ -34,7 +37,7 @@ const HomePageComponent: FC<IHomePageComponent> = ({ data }) => {
       <AlbumSection latestAlbum={data?.latestAlbum} />
 
       <AboutSection
-        presentationSectionData={[data.presentationSection, data.socialLinks]}
+        presentationSectionData={[data?.settings?.presentationSection, data?.settings?.socialLinks]}
       />
 
       <Discography albums={data?.albums} />
