@@ -22,9 +22,6 @@ interface IAboutSection {
 const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
   const [presentationSection, socialLinks] = presentationSectionData;
 
-  console.log(presentationSectionData,'qwe');
-  
-
   return (
     <section id="about" className="about overlay main">
       <div className="background-img about-background">
