@@ -1,0 +1,84 @@
+@import '../Base/base.scss';
+
+.error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: $bg-color;
+  color: #ffffff;
+  font-family: $font-family-base;
+  padding: 40px 50px;
+
+  @media (max-width: 600px) {
+    padding: 24px 16px;
+  }
+}
+
+.error-content {
+  text-align: center;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.error-title {
+  font-family: $font-family-heading;
+  font-size: 96px;
+  font-weight: 700;
+  color: $primary-color;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 1px 1px 3px rgba(59, 75, 91, 0.7);
+
+  @media (max-width: 600px) {
+    font-size: 64px;
+  }
+}
+
+.error-description {
+  font-size: 18px;
+  line-height: $line-height-p;
+  color: #b7babb;
+  margin: 0;
+}
+
+.error-message {
+  font-size: 16px;
+  line-height: $line-height-p;
+  color: #b7babb;
+  margin: 0;
+  font-style: italic;
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
+}
+
+.error-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.back-button,
+.retry-button {
+  background: none;
+  border: 2px solid $primary-color;
+  color: $primary-color;
+  font-family: $font-family-base;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: $primary-color;
+    color: #ffffff;
+  }
+}
