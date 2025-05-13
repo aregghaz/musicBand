@@ -11,6 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="UTF-8" />
+        <link rel="icon" href="./favicon.ico" />
       </head>
       <body>
         <Nav navItems={navigationItems} />
