@@ -11,7 +11,7 @@ import { sliderSettings } from './constants';
 import MemberInfoModal from '../MemberComponents/MemberInfoModal';
 
 interface IBandMember {
-  data: any;
+  data?: any;
 }
 
 const BandMembers: FC<IBandMember> = ({ data: members }) => {
