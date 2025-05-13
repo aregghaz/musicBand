@@ -30,13 +30,13 @@ const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
       </div>
 
       <div className="container">
-        <div className="row vertical-align">
-          <div className="col-lg-5 col-md-12">
+        <div className="row vertical-align text-center">
+          <div className="w-100">
             <div className="front-p">
               <h1 className="uppercase text-white">
                 {presentationSection?.title || ''}
               </h1>
-              <p className="w-93">{presentationSection?.description || ''}</p>
+              <p className="">{presentationSection?.description || ''}</p>
 
               <ul className="block-social list-inline mb-4 mb-lg-0">
                 {socialLinks &&
@@ -62,8 +62,8 @@ const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
           </div>
 
           <div className="col-lg-7">
-            <div className="row">
-              <div className="col-md-4">
+            {/* <div className="row"> */}
+            {/* <div className="col-md-4">
                 <div className="block-content front-p pt-3 pb-3 text-center rounded bg-red mb-4 mb-lg-0">
                   <h3 className="uppercase mb-0 font-weight-600">
                     Upcoming Tour
@@ -80,8 +80,8 @@ const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
                       `, ${getYearFromDate(presentationSection?.upcomingDateTo)}`}
                   </span>
                 </div>
-              </div>
-              <div className="col-md-4">
+              </div> */}
+            {/* <div className="col-md-4">
                 <div className="block-content pt-3 pb-3 text-center rounded bg-dark-blue front-p mb-4 mb-lg-0 location-block">
                   <h3 className="uppercase mb-0 font-weight-600">Location</h3>
                   <span className="p mb-0">
@@ -92,8 +92,8 @@ const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
                     {presentationSection?.upcomingCountry} <br />
                   </span>
                 </div>
-              </div>
-              <div className="col-md-4">
+              </div> */}
+            {/* <div className="col-md-4">
                 <div className="block-content front-p">
                   <a
                     className="btn btn-primary uppercase with-ico border-2"
@@ -102,8 +102,8 @@ const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
                     <i className="icon-ticket"></i> Buy a Ticket
                   </a>
                 </div>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
           </div>
         </div>
       </div>

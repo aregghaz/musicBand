@@ -19,6 +19,7 @@
 
 .feature-list {
   display: flex;
+  justify-content: center;
   
   @media (max-width:991px) {
     flex-direction: column;

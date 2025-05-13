@@ -42,13 +42,13 @@ const HomePageComponent: FC<IHomePageComponent> = ({ data }) => {
 
       <Discography albums={data?.albums} />
 
-      <DividerSection upcomingTourSummary={data?.upcomingTourSummary} />
+      {/* <DividerSection upcomingTourSummary={data?.upcomingTourSummary} /> */}
 
       <BandMembers data={data?.bandMembers} />
 
       <TourSection concerts={data?.concerts} />
 
-      <PreSaleSection upcomingSectionData={data?.upcomingTourSection?.[0]} />
+      {/* <PreSaleSection upcomingSectionData={data?.upcomingTourSection?.[0]} /> */}
 
       <GallerySection images={data?.galleries} />
 

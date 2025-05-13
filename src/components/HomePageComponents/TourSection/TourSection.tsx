@@ -6,6 +6,7 @@ import './TourSection.scss';
 import Button from '@uikit/Button/Button';
 import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import { formatDateToMonthAndDay } from '@utils/index';
+import Link from 'next/link';
 
 interface ITourSection {
   concerts: any;
@@ -18,6 +19,8 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
   useEffect(() => {
     setFilteredConcerts(concerts.filter((el: any) => el.type === activeTab));
   }, [activeTab]);
+
+  console.log(filteredConcerts, 'qwe');
 
   const handleTabClick = (tabId: string) => setActiveTab(tabId);
 
@@ -78,6 +81,7 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
                         filteredConcerts.map(
                           (
                             {
+                              buyTicketLink,
                               concertCity,
                               concertPlace,
                               concertDate,
@@ -105,9 +109,19 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
                                       <i className="icon-ticket"></i>VIP
                                     </Button>
                                   )}
-                                  <Button className="tour-button-spaced">
-                                    <i className="icon-ticket"></i>Buy Ticket
-                                  </Button>
+
+                                  {buyTicketLink ? (
+                                    <Link
+                                      href={buyTicketLink}
+                                      target="_blank"
+                                      rel="noopener"
+                                    >
+                                      <Button className="tour-button-spaced">
+                                        <i className="icon-ticket"></i>Buy
+                                        Ticket
+                                      </Button>
+                                    </Link>
+                                  ) : null}
                                 </div>
                               </div>
                               {idx !== filteredConcerts.length - 1 && <hr />}

@@ -48,18 +48,25 @@ export const formatDateToMonthAndDay = (
 ) => {
   if (!dateString) return null;
 
-  const date = new Date(dateString);
+  const match = dateString.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return ''; 
+
+  const [, year, month, day] = match;
+  const date = new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
   if (isNaN(date.getTime())) return '';
 
   if (monthNumber) {
-    // Return month number + day
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    return `${month}/${day}`;
+    const monthStr = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+    const dayStr = date.getUTCDate().toString().padStart(2, '0');
+    return `${monthStr}/${dayStr}`;
   }
 
-  // Return month name + day
-  return date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+  // Return day + month name (e.g., "12 May")
+  return date.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    timeZone: 'UTC',
+  });
 };
 
 export const getYearFromDate = (dateString?: string | null): number | null => {
