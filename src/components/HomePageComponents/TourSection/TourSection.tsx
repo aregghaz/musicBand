@@ -20,8 +20,6 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
     setFilteredConcerts(concerts.filter((el: any) => el.type === activeTab));
   }, [activeTab]);
 
-  console.log(filteredConcerts, 'qwe');
-
   const handleTabClick = (tabId: string) => setActiveTab(tabId);
 
   return (

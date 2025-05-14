@@ -1,69 +1,33 @@
-import React, { FC, useState } from 'react';
-import GalleryImage from '@assets/img/imagePlaceholder.jpg';
-import ImageModal from '@uikit/ImageModal/ImageModal';
+'use client';
+
+import React, { FC } from 'react';
+import Link from 'next/link';
 import './GallerySection.scss';
-import CustomImage from '@uikit/Image/Image';
-import LazyLoadSection from '@components/Common/LazyLoadSection/LazyLoadSection';
-import { STORAGE_URL } from '@utils/index';
 
 interface IGallerySection {
-  images: any;
+  images: { id: number; folderName: string }[];
 }
 
 const GallerySection: FC<IGallerySection> = ({ images }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const openModal = (image: any) => {
-    setSelectedImage(image);
-  };
-
-  const closeModal = () => {
-    setSelectedImage(null);
-  };
-
   return (
-    <>
-      <section id="gallery" className="gallery main">
-        <div className="container">
-          <div className="row justify-content-center ">
-            <div className="col-12 col-md-10 col-lg-9">
-              <div className="block-content  gap-one-bottom-md text-center">
-                <i className="icon-camera-7 big-icon adjust-space "></i>
-              </div>
-            </div>
-          </div>
+    <section id="gallery" className="gallery">
+      <div className="gallery-container">
+        <h2 className="gallery-title">Gallery</h2>
+        <div className="gallery-grid">
+          {images?.length > 0 ? (
+            images.map((item) => (
+              <Link key={item.id} href={`/galleries/${item.id}`} passHref>
+                <div className="gallery-card">
+                  <h3 className="gallery-card-title">{item.folderName}</h3>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <p className="gallery-empty">No gallery found.</p>
+          )}
         </div>
-
-        <div className="container">
-          <div className="row justify-content-center text-center">
-            <div className="col-12">
-              <div className="card-gallery image-gallery">
-                {images?.map((item: any, index: number) => (
-                  <div
-                    key={index}
-                    className="image-container"
-                    onClick={() => openModal(item.galleryImage)}
-                  >
-                    <CustomImage
-                      className="scaled"
-                      alt={`Gallery Image ${index + 1}`}
-                      src={`${STORAGE_URL}${item.galleryImage}`}
-                    />
-                  </div>
-                ))}
-              </div>
-              <a className="btn btn-primary uppercase with-ico mt-5" href="#">
-                <i className="icon-instagram"></i> Follow us @mousiqua
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {selectedImage && (
-          <ImageModal closeModal={closeModal} selectedImage={selectedImage} />
-        )}
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

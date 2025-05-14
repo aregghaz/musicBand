@@ -28,6 +28,10 @@ const BandMembers: FC<IBandMember> = ({ data: members }) => {
     setOpenModal(false);
   };
 
+  const sortedMembers = members
+    ? [...members].sort((a, b) => a.order - b.order)
+    : [];
+
   return (
     <>
       <section id="band" className="band main py-5">
@@ -35,7 +39,7 @@ const BandMembers: FC<IBandMember> = ({ data: members }) => {
         <div className="container">
           {members && (
             <Slider {...sliderSettings}>
-              {members.map((member: any, index: number) => (
+              {sortedMembers.map((member: any, index: number) => (
                 <div
                   key={member.id}
                   className="p-3"
