@@ -3,6 +3,7 @@ import './ImageModal.scss';
 import CustomImage from '@uikit/Image/Image';
 import { STORAGE_URL } from '@utils/index';
 import { useDisableScroll } from 'src/hooks/useDisableScroll';
+import ImageZoomInOut from '@uikit/ImageZoomInOut/ImageZoomInOut';
 
 interface IImageModal {
   selectedImage?: any;
@@ -19,7 +20,7 @@ const ImageModal: FC<IImageModal> = ({ selectedImage, closeModal }) => {
           &times;
         </span>
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <CustomImage src={`${STORAGE_URL}${selectedImage}`} alt="Zoomed In" />
+          <ImageZoomInOut imageUrl={`${STORAGE_URL}${selectedImage}`} />
         </div>
       </div>
     )

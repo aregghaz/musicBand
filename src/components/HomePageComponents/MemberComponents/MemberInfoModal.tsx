@@ -1,17 +1,43 @@
-import Modal from '@uikit/Modal/Modal';
+'use client';
+
 import { FC } from 'react';
-import './MemberInfoModal.scss';
+import Modal from '@uikit/Modal/Modal';
 import CustomImage from '@uikit/Image/Image';
 import { STORAGE_URL } from '@utils/index';
-import Slider from 'react-slick';
-import { sliderSettings } from './constants';
+import './MemberInfoModal.scss';
+import dynamic from 'next/dynamic';
 
-interface IMemberInfoModal {
-  member: any;
+const ResponsiveMasonry = dynamic(
+  () => import('react-responsive-masonry').then((mod) => mod.ResponsiveMasonry),
+  { ssr: false }
+);
+const Masonry = dynamic(
+  () => import('react-responsive-masonry').then((mod) => mod.default),
+  { ssr: false }
+);
+
+interface IMember {
+  id: number;
+  firstName: string;
+  lastName: string;
+  role: string;
+  memberImage: string;
+  memberImages?: string[];
+  country?: string;
+  description?: string;
+  facebookLink?: string;
+  instagramLink?: string;
+  webpageLink?: string;
+  wikipediaLink?: string;
+  youtubeLink?: string;
+}
+
+interface IMemberInfoModalProps {
+  member: IMember;
   closeModal: () => void;
 }
 
-const MemberInfoModal: FC<IMemberInfoModal> = ({ member, closeModal }) => {
+const MemberInfoModal: FC<IMemberInfoModalProps> = ({ member, closeModal }) => {
   const hasAnyLink =
     member.facebookLink ||
     member.instagramLink ||
@@ -50,7 +76,7 @@ const MemberInfoModal: FC<IMemberInfoModal> = ({ member, closeModal }) => {
                   'wikipedia',
                   'youtube',
                 ].map((key, i) => {
-                  const iconMap: Record<string, string> = {
+                  const iconMap: { [key: string]: string } = {
                     facebook: 'facebook',
                     instagram: 'instagram',
                     wikipedia: 'wikipedia',
@@ -58,10 +84,11 @@ const MemberInfoModal: FC<IMemberInfoModal> = ({ member, closeModal }) => {
                     webpage: 'chrome',
                   };
 
-                  return member[`${key}Link`] ? (
+                  const linkKey = `${key}Link` as keyof IMember;
+                  return member[linkKey] ? (
                     <li key={i} className="list-inline-item mr-0">
                       <a
-                        href={member[`${key}Link`]}
+                        href={member[linkKey] as string}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -81,21 +108,28 @@ const MemberInfoModal: FC<IMemberInfoModal> = ({ member, closeModal }) => {
           </div>
         </div>
 
-        {member?.memberImages?.length > 0 && (
+        {Boolean(member?.memberImages?.length) && (
           <div className="band-member-gallery">
             <h4>Gallery</h4>
-
-            <div className="band-member-slider-wrapper">
-              <Slider {...sliderSettings}>
-                {member?.memberImages?.map((image: any, index: number) => (
-                  <div key={image} className="p-3 modal-band-member-image">
-                    <CustomImage
-                      src={`${STORAGE_URL}${image}`}
-                      alt={`member img ${index}`}
-                    />
-                  </div>
-                ))}
-              </Slider>
+            <div className="gallery-scroll-container">
+              <ResponsiveMasonry
+                columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+              >
+                <Masonry gutter="10px">
+                  {member?.memberImages?.map((image, index) => (
+                    <div
+                      key={`${image}-${index}`}
+                      className="modal-band-member-image"
+                    >
+                      <CustomImage
+                        src={`${STORAGE_URL}${image}`}
+                        alt={`member img ${index}`}
+                        className="rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </Masonry>
+              </ResponsiveMasonry>
             </div>
           </div>
         )}

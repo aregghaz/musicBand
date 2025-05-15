@@ -3,9 +3,10 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import './GallerySection.scss';
+import { STORAGE_URL } from '@utils/index';
 
 interface IGallerySection {
-  images: { id: number; folderName: string }[];
+  images: { id: number; folderName: string; folderImage: string | null }[];
 }
 
 const GallerySection: FC<IGallerySection> = ({ images }) => {
@@ -16,8 +17,19 @@ const GallerySection: FC<IGallerySection> = ({ images }) => {
         <div className="gallery-grid">
           {images?.length > 0 ? (
             images.map((item) => (
-              <Link key={item.id} href={`/galleries/${item.id}`} passHref>
-                <div className="gallery-card">
+              <Link
+                key={item.id}
+                href={`/galleries/${item.id}`}
+                passHref
+                style={{ display: 'block', borderRadius: 12 }}
+              >
+                <div
+                  className="gallery-card"
+                  style={{
+                    backgroundImage: `url(${STORAGE_URL}/storage/${item.folderImage})`,
+                  }}
+                >
+                  <div className="gallery-card-overlay" />
                   <h3 className="gallery-card-title">{item.folderName}</h3>
                 </div>
               </Link>

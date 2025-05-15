@@ -52,28 +52,6 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
               {concerts && (
                 <ul className="block-tab">
                   <li className={`active`}>
-                    {/* <div className="block-content text-center">
-                          <div className="block-video">
-                            <img
-                              src={activeTour.videoThumbnail}
-                              className="background-img mb-0"
-                              alt=""
-                            />
-                            <a
-                              className="video-play-but popup-youtube"
-                              href={activeTour.videoLink}
-                            ></a>
-                          </div>
-                          <p className="mt-3">
-                            <span className="opc-70">
-                              {activeTour.bookingText}
-                            </span>{' '}
-                            <a className="link colored-link" href="#">
-                              Booking Enquiries
-                            </a>
-                          </p>
-                        </div> */}
-
                     <div className="block-content gap-one-top-sm text-left">
                       {Object.keys(filteredConcerts).length > 0 ? (
                         filteredConcerts.map(
