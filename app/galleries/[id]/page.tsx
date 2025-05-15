@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import GalleryInner from '@components/GalleryInnerComponents/GalleryInnder';
+import GalleryInner from '@components/GalleryInnerComponents/GalleryInner';
 import { BASE_URL } from '@utils/index';
 
 interface GalleryCategory {
@@ -15,7 +15,8 @@ interface GalleryCategory {
 }
 
 export default async function GalleryPage({ params }: any) {
-  const response = await fetch(`${BASE_URL}/gallery/categories/${params.id}`, {
+  const { id } = await params;
+  const response = await fetch(`${BASE_URL}/gallery/categories/${id}`, {
     cache: 'no-store',
   });
 

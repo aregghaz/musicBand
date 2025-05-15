@@ -16,6 +16,7 @@
     "react-responsive-masonry": "^2.7.1",
     "react-router-dom": "^6.26.0",
     "react-slick": "^0.30.3",
+    "react-zoom-pan-pinch": "^3.7.0",
     "sass": "^1.77.4",
     "slick-carousel": "^1.8.1"
   },

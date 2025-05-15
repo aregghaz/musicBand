@@ -72,7 +72,7 @@ const ContactSection: FC<IContactSection> = ({ contacts, socialLinks }) => {
 
           <div className="row justify-content-center">
             <div className="col-12">
-              <ul className="block-social list-inline text-center mt-4">
+              <ul className="block-social list-inline text-center mt-5">
                 {socialLinks &&
                   Object.keys(socialLinks).map((key, index) => {
                     if (socialLinks[key]) {

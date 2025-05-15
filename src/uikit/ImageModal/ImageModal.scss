@@ -9,11 +9,16 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  padding: 40px;
 
   .modal-content {
-    position: relative;
-    max-width: 50%;
-    max-height: 75%;
+    // position: relative; 
+    // height: 95vh;
+    background: transparent !important;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    // margin: 70px;
     overflow: hidden;
 
     @media (max-width: 991px) {
@@ -22,17 +27,15 @@
 
     img {
       position: static !important;
-      max-width: 100%;
-      max-height: 100%;
       margin-bottom: unset !important;
-      // object-fit: cover;
+      object-fit: contain;
       // aspect-ratio: 2.2;
     }
   }
 
   .close-btn {
     position: absolute;
-    top: 64px;
+    top: 8px;
     right: 15px;
     font-size: 32px;
     color: white;
