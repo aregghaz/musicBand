@@ -13,7 +13,6 @@ import NewsSection from '@components/HomePageComponents/NewsSection/NewsSection'
 import PreSaleSection from '@components/HomePageComponents/PreSaleSection/PreSaleSection';
 import TourSection from '@components/HomePageComponents/TourSection/TourSection';
 import TwitterSection from '@components/HomePageComponents/TwitterSection/TwitterSection';
-import { BASE_URL } from '@utils/index';
 
 export const metadata = {
   title: 'Blog',
@@ -24,42 +23,44 @@ export const metadata = {
 
 interface IHomePageComponent {
   data: any;
+  permissions: any;
 }
 
-const HomePageComponent: FC<IHomePageComponent> = ({ data }) => {
+const HomePageComponent: FC<IHomePageComponent> = ({ data, permissions }) => {
   return (
     <div className="wrapper">
-      <HeroSection sliders={data.sliders} />
-
-      <AlbumSection latestAlbum={data?.latestAlbum} />
-
-      <AboutSection
-        presentationSectionData={[
-          data?.settings?.presentationSection,
-          data?.settings?.socialLinks,
-        ]}
-      />
-
-      <Discography albums={data?.albums} />
-
-      {/* <DividerSection upcomingTourSummary={data?.upcomingTourSummary} /> */}
-
-      <BandMembers data={data?.bandMembers} />
-
-      <TourSection concerts={data?.concerts} />
-
-      {/* <PreSaleSection upcomingSectionData={data?.upcomingTourSection?.[0]} /> */}
-
-      <GallerySection images={data?.galleries} />
-
-      <NewsSection blogPosts={data?.blogs} />
-
+      {permissions.slidersSection && <HeroSection sliders={data.sliders} />}
+      {permissions.latestAlbumSection && (
+        <AlbumSection latestAlbum={data.latestAlbum} />
+      )}
+      {permissions.aboutSection && (
+        <AboutSection
+          presentationSectionData={[
+            data.settings?.presentationSection,
+            data.settings?.socialLinks,
+          ]}
+        />
+      )}
+      {permissions.albumSection && <Discography albums={data.albums} />}
+      {permissions.toursSection && (
+        <DividerSection upcomingTourSummary={data.upcomingTourSummary} />
+      )}
+      {permissions.bandMembersSection && (
+        <BandMembers data={data.bandMembers} />
+      )}
+      {permissions.concertsSection && <TourSection concerts={data.concerts} />}
+      {permissions.toursSection && (
+        <PreSaleSection upcomingSectionData={data.upcomingTourSection?.[0]} />
+      )}
+      {permissions.gallerySection && <GallerySection images={data.galleries} />}
+      {permissions.blogsSection && <NewsSection blogPosts={data.blogs} />}
       <TwitterSection />
-
-      <ContactSection
-        contacts={data?.contacts}
-        socialLinks={data?.settings?.socialLinks}
-      />
+      {permissions.contactsSection && (
+        <ContactSection
+          contacts={data.contacts}
+          socialLinks={data.settings?.socialLinks}
+        />
+      )}
     </div>
   );
 };

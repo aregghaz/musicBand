@@ -16,9 +16,20 @@ const HomePage = async () => {
     cache: 'no-store',
   });
 
+  const permissions = await fetch(`${BASE_URL}/home-sections-manage`, {
+    cache: 'no-store',
+  });
+
   const homeData = await res.json();
 
-  return <HomePageComponent data={homeData?.data} />;
+  const permissionsData = await permissions.json();
+
+  return (
+    <HomePageComponent
+      data={homeData?.data}
+      permissions={permissionsData.data}
+    />
+  );
 };
 
 export default HomePage;

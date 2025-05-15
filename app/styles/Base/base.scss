@@ -214,7 +214,7 @@ h1,
 
 h2,
 .h2 {
-  font-size: $font-size-medium !important;
+  font-size: $font-size-medium;
   line-height: 3rem;
   letter-spacing: 5px;
 }
@@ -237,7 +237,7 @@ h4,
 
 h5,
 .h5 {
-  font-size: $font-size-h5 !important;
+  font-size: $font-size-h5;
   line-height: unset !important;
 }
 
