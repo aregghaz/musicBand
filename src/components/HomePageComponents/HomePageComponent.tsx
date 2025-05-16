@@ -14,6 +14,7 @@ import TourSection from '@components/HomePageComponents/TourSection/TourSection'
 import TwitterSection from '@components/HomePageComponents/TwitterSection/TwitterSection';
 import BlogsSection from '@components/HomePageComponents/BlogsSection/BlogsSection';
 import NewsAboutUsSection from './NewsAboutUsSection/NewsAboutUsSection';
+import ReviewsSection from './ReviewsSection/ReviewsSection';
 
 export const metadata = {
   title: 'Blog',
@@ -28,6 +29,8 @@ interface IHomePageComponent {
 }
 
 const HomePageComponent: FC<IHomePageComponent> = ({ data, permissions }) => {
+  console.log(permissions, 'qweqe');
+
   return (
     <div className="wrapper">
       {permissions.slidersSection && <HeroSection sliders={data.sliders} />}
@@ -61,6 +64,8 @@ const HomePageComponent: FC<IHomePageComponent> = ({ data, permissions }) => {
       {permissions.gallerySection && <GallerySection images={data.galleries} />}
       {permissions.blogsSection && <BlogsSection blogPosts={data.blogs} />}
       <TwitterSection />
+
+      {permissions.reviewsSection && <ReviewsSection reviews={data.reviews} />}
       {permissions.contactsSection && (
         <ContactSection
           contacts={data.contacts}
