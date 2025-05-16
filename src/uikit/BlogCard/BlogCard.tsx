@@ -15,10 +15,13 @@ interface IBlog {
     link?: string;
     id: number;
   };
+
+  link: string;
+  target?: string;
 }
 
-const BlogCard: FC<IBlog> = ({ blog }) => {
-  const { createdAt, title, description, image, id } = blog;
+const BlogCard: FC<IBlog> = ({ blog, link, target = '_self' }) => {
+  const { createdAt, title, description, image } = blog;
 
   return (
     <div className="blog-card">
@@ -31,11 +34,12 @@ const BlogCard: FC<IBlog> = ({ blog }) => {
       </div>
       <div className="blog-content">
         <span className="blog-date">{formatDate(createdAt)}</span>
-        <h3 className="blog-title">{title}</h3>
-        <p className="blog-description">{description}</p>
+        {title && <h3 className="blog-title">{title}</h3>}
+        {description && <p className="blog-description">{description}</p>}
       </div>
       <Link
-        href={`/blogs/${id}`}
+        href={link}
+        target={target}
         className="read-more link colored-link cursor-pointer"
       >
         Read more →

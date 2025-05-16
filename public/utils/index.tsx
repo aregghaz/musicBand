@@ -24,8 +24,8 @@ export const navigationItems = [
     link: '/#gallery',
   },
   {
-    label: 'News',
-    link: '/#news',
+    label: 'Blog',
+    link: '/#blog',
   },
   {
     label: 'Contact',

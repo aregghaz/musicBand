@@ -9,10 +9,11 @@ import Discography from '@components/HomePageComponents/Discography/Discography'
 import DividerSection from '@components/HomePageComponents/DividerSection/DividerSection';
 import GallerySection from '@components/HomePageComponents/GallerySection/GallerySection';
 import HeroSection from '@components/HomePageComponents/HeroSection/HeroSection';
-import NewsSection from '@components/HomePageComponents/NewsSection/NewsSection';
 import PreSaleSection from '@components/HomePageComponents/PreSaleSection/PreSaleSection';
 import TourSection from '@components/HomePageComponents/TourSection/TourSection';
 import TwitterSection from '@components/HomePageComponents/TwitterSection/TwitterSection';
+import BlogsSection from '@components/HomePageComponents/BlogsSection/BlogsSection';
+import NewsAboutUsSection from './NewsAboutUsSection/NewsAboutUsSection';
 
 export const metadata = {
   title: 'Blog',
@@ -48,12 +49,17 @@ const HomePageComponent: FC<IHomePageComponent> = ({ data, permissions }) => {
       {permissions.bandMembersSection && (
         <BandMembers data={data.bandMembers} />
       )}
+
+      {permissions.aboutUsNewsSection && (
+        <NewsAboutUsSection aboutUsNews={data.aboutUsNews} />
+      )}
+
       {permissions.concertsSection && <TourSection concerts={data.concerts} />}
       {permissions.toursSection && (
         <PreSaleSection upcomingSectionData={data.upcomingTourSection?.[0]} />
       )}
       {permissions.gallerySection && <GallerySection images={data.galleries} />}
-      {permissions.blogsSection && <NewsSection blogPosts={data.blogs} />}
+      {permissions.blogsSection && <BlogsSection blogPosts={data.blogs} />}
       <TwitterSection />
       {permissions.contactsSection && (
         <ContactSection

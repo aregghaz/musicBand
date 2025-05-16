@@ -4,6 +4,7 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import './GallerySection.scss';
 import { STORAGE_URL } from '@utils/index';
+import SectionTitle from '@uikit/SectionTitle/SectionTitle';
 
 interface IGallerySection {
   images: { id: number; folderName: string; folderImage: string | null }[];
@@ -13,7 +14,7 @@ const GallerySection: FC<IGallerySection> = ({ images }) => {
   return (
     <section id="gallery" className="gallery">
       <div className="gallery-container">
-        <h2 className="gallery-title">Gallery</h2>
+        <SectionTitle title="Gallery" />
         <div className="gallery-grid">
           {images?.length > 0 ? (
             images.map((item) => (
