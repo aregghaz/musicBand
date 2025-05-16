@@ -3,7 +3,7 @@
 import React, { FC } from 'react';
 
 import './BlogComponent.scss';
-import BlogCard from './BlogCard/BlogCard';
+import BlogCard from '@uikit/BlogCard/BlogCard';
 
 interface IBlogComponent {
   blogs: any;
@@ -21,7 +21,7 @@ const BlogComponent: FC<IBlogComponent> = ({ blogs }: any) => {
       </div>
       <div className="blog-list">
         {blogs.map((blog: any) => (
-          <BlogCard key={blog.id} blog={blog} />
+          <BlogCard key={blog.id} blog={blog} link={`/blogs/${blog.id}`} />
         ))}
       </div>
     </section>

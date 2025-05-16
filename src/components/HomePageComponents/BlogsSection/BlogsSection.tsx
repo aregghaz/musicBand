@@ -3,19 +3,19 @@ import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
 import { STORAGE_URL, formatDate } from '@utils/index';
 import ImagePlaceholder from '@assets/img/imagePlaceholder.jpg';
-import './NewsSection.scss';
+import './BlogsSection.scss';
 
 import CustomImage from '@uikit/Image/Image';
 import Link from 'next/link';
 
-interface INewsSection {
+interface IBlogsSection {
   blogPosts: any;
 }
 
-const NewsSection: FC<INewsSection> = ({ blogPosts }) => {
+const BlogsSection: FC<IBlogsSection> = ({ blogPosts }) => {
   return (
     <>
-      <section id="news" className="news main">
+      <section id="blog" className="news main">
         <SectionTitle title="On the blog" />
         <div className="container">
           <ul className="news-list">
@@ -102,4 +102,4 @@ const NewsSection: FC<INewsSection> = ({ blogPosts }) => {
   );
 };
 
-export default NewsSection;
+export default BlogsSection;
