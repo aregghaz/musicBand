@@ -28,9 +28,11 @@ const BandMembers: FC<IBandMember> = ({ data: members }) => {
     setOpenModal(false);
   };
 
-  const sortedMembers = members
-    ? [...members].sort((a, b) => a.order - b.order)
+  const activeMembers = members
+    ? members.filter((member: any) => member.isActive)
     : [];
+
+  const sortedMembers = [...activeMembers].sort((a, b) => a.order - b.order);
 
   return (
     <>

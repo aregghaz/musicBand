@@ -14,7 +14,7 @@ const NewsAboutUsSection: FC<IBlogsSection> = ({ aboutUsNews }) => {
     <section id="news-about-us" className="news main">
       <SectionTitle title="News about us" />
       <div className="container">
-        <ul className="news-list">
+        <ul className="news-us-list">
           {aboutUsNews &&
             aboutUsNews.map((post: any, index: any) => (
               <li
@@ -72,9 +72,9 @@ const NewsAboutUsSection: FC<IBlogsSection> = ({ aboutUsNews }) => {
                         <h2>{post.title}</h2>
                         <p className="lead">{post.description}</p>
                         <Link
-                          href={`/about-us-news/${post.id}`}
-                          className="link colored-link mt-3"
+                          href={post.topicLink}
                           target="_blank"
+                          className="link colored-link mt-3"
                         >
                           More info ›
                         </Link>
@@ -86,14 +86,18 @@ const NewsAboutUsSection: FC<IBlogsSection> = ({ aboutUsNews }) => {
             ))}
         </ul>
 
-        <div className="block-content text-center">
-          <Link
-            className="btn btn-primary with-ico uppercase mt-5"
-            href="/about-us-news"
-          >
-            View all news about us
-          </Link>
-        </div>
+        {aboutUsNews && aboutUsNews.length > 0 ? (
+          <div className="block-content text-center">
+            <Link
+              className="btn btn-primary with-ico uppercase mt-5"
+              href="/about-us-news"
+            >
+              View all news about us
+            </Link>
+          </div>
+        ) : (
+          <p className="text-center">No news yet</p>
+        )}
       </div>
     </section>
   );

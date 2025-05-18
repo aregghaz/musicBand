@@ -111,7 +111,7 @@ const AlbumSection: FC<IAlbumSection> = ({ latestAlbum }) => {
                             </h6>
                             <span>{track.album}</span>
                           </div>
-                          <div className="col-md-6 text-md-right album-actions-block d-flex justify-content-end gap-2">
+                          <div className="col-md-6 text-md-right album-actions-block d-flex gap-2">
                             {track.songLink && (
                               <Button
                                 bordered

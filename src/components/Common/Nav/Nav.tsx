@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC, useCallback, useMemo, useState } from 'react';
 import { useWindowWidth } from '../../../hooks/useWindowWidth';
 import { useVisibility } from '../../../hooks/useVIsibility';
 import Link from 'next/link';
@@ -14,9 +14,10 @@ import Image from 'next/image';
 
 interface INav {
   navItems: { [name: string]: string }[];
+  permissions: any;
 }
 
-const Nav: FC<INav> = ({ navItems }) => {
+const Nav: FC<INav> = ({ navItems, permissions }) => {
   const [isOpenedMenu, setIsOpenedMenu] = useState<boolean>(false);
   const { isVisible } = useVisibility();
 
@@ -33,6 +34,24 @@ const Nav: FC<INav> = ({ navItems }) => {
     : isOpenedMenu
       ? 'block'
       : 'none';
+
+  const finallyItems = useMemo(() => {
+    const labelToPermissionMap: { [key: string]: keyof typeof permissions } = {
+      About: 'aboutSection',
+      Discography: 'albumSection',
+      Concerts: 'concertsSection',
+      Gallery: 'gallerySection',
+      Blog: 'blogsSection',
+      'News About Us': 'aboutUsNewsSection',
+      Contact: 'contactsSection',
+    };
+
+    return navItems.filter((item) => {
+      const permissionKey = labelToPermissionMap[item.label];
+
+      return permissionKey ? permissions?.[permissionKey] === true : true;
+    });
+  }, [navItems, permissions]);
 
   const logo = isDesktop ? (isVisible ? logoDark : logoLight) : logoDark;
   return (
@@ -59,7 +78,7 @@ const Nav: FC<INav> = ({ navItems }) => {
               transition: 'all 0.3s ease-in-out',
             }}
           >
-            {navItems.map((item, idx) => (
+            {finallyItems.map((item, idx) => (
               <li key={idx} onClick={hamdleToggleMenu}>
                 <Link className="scroll list-inline-item" href={`${item.link}`}>
                   {item.label}

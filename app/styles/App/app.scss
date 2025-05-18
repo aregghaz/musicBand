@@ -1,3 +1,14 @@
+::-webkit-scrollbar {
+  background: #05090d;
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d0343a;
+  width: 3px;
+  border-radius: 12px;
+}
+
 .loader {
   background: #13181d;
   bottom: 0;
