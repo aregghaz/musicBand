@@ -27,6 +27,11 @@ export const navigationItems = [
     label: 'Blog',
     link: '/#blog',
   },
+
+  {
+    label: 'News About Us',
+    link: '/#news-about-us',
+  },
   {
     label: 'Contact',
     link: '/#contact',

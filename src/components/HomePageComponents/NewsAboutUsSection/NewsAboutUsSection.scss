@@ -54,3 +54,12 @@
     margin-top: 20px;
   }
 }
+
+.news-us-list {
+  li {
+    margin-bottom: 7.5rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

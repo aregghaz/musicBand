@@ -3,9 +3,17 @@ import './styles/globals.scss';
 import Footer from '@components/Common/Footer/Footer';
 import ScrollUp from '@uikit/ScrollUp/ScrollUp';
 import Nav from '@components/Common/Nav/Nav';
-import { navigationItems } from '@utils/index';
+import { BASE_URL, navigationItems } from '@utils/index';
 
-export default function Layout({ children }: { children: ReactNode }) {
+async function getData() {
+  const res = await fetch(`${BASE_URL}/home-sections-manage`, {
+    cache: 'no-store',
+  });
+  return res.json();
+}
+
+export default async function Layout({ children }: { children: ReactNode }) {
+  const permissions = await getData();
   return (
     <html lang="en">
       <head>
@@ -14,7 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <link rel="icon" href="./favicon.ico" />
       </head>
       <body>
-        <Nav navItems={navigationItems} />
+        <Nav navItems={navigationItems} permissions={permissions.data} />
         <main>{children}</main>
 
         <Footer />

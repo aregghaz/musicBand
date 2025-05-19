@@ -128,7 +128,7 @@ const ReviewsSection: FC<IReviews> = ({ reviews = [] }) => {
             )}
             <button
               type="submit"
-              className="form-button"
+              className="btn btn-primary uppercase border-3"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Submitting...' : 'Submit Review'}

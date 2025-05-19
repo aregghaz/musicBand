@@ -29,8 +29,6 @@ interface IHomePageComponent {
 }
 
 const HomePageComponent: FC<IHomePageComponent> = ({ data, permissions }) => {
-  console.log(permissions, 'qweqe');
-
   return (
     <div className="wrapper">
       {permissions.slidersSection && <HeroSection sliders={data.sliders} />}
