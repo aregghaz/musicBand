@@ -27,7 +27,7 @@ const Nav: FC<INav> = ({ navItems, permissions }) => {
     setIsOpenedMenu(!isOpenedMenu);
   };
 
-  const isDesktop = Boolean(windowWith) && windowWith > 991;
+  const isDesktop = Boolean(windowWith) && windowWith > 1120;
 
   const navItemBehavior = isDesktop
     ? 'initial'
@@ -43,6 +43,7 @@ const Nav: FC<INav> = ({ navItems, permissions }) => {
       Gallery: 'gallerySection',
       Blog: 'blogsSection',
       'News About Us': 'aboutUsNewsSection',
+      'Band Members': 'bandMembersSection',
       Contact: 'contactsSection',
     };
 

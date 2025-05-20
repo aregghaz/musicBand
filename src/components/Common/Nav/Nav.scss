@@ -1,25 +1,18 @@
 .main-menu {
-  
-  @media (max-width:768px) {
+  @media (max-width: 768px) {
     padding-top: 6px !important;
   }
-
 }
 
-
-.left-part{
- 
-  a{
+.left-part {
+  a {
     width: 80px !important;
-    @media (max-width:768px) {
+    @media (max-width: 1120px) {
       width: 70px !important;
     }
   }
-  img{
+  img {
     position: static !important;
     margin-bottom: unset !important;
   }
-
-  
 }
-

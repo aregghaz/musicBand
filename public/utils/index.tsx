@@ -36,6 +36,10 @@ export const navigationItems = [
     label: 'Contact',
     link: '/#contact',
   },
+  {
+    label: 'Band Members',
+    link: '/#band',
+  },
 ];
 
 export const formatDate = (isoString: string) => {
