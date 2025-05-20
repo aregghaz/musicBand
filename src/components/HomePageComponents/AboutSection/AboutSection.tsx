@@ -2,7 +2,12 @@ import React, { FC } from 'react';
 import './AboutSection.scss';
 import CustomImage from '@uikit/Image/Image';
 import AboutBackground from '@assets/img/25.jpg';
-import { formatDateToMonthAndDay, getYearFromDate } from '@utils/index';
+import {
+  STORAGE_URL,
+  formatDateToMonthAndDay,
+  getYearFromDate,
+} from '@utils/index';
+import { useWindowWidth } from 'src/hooks/useWindowWidth';
 
 interface IAboutSection {
   presentationSectionData: [
@@ -14,6 +19,8 @@ interface IAboutSection {
       upcomingLocation?: string;
       upcomingState?: string;
       upcomingCountry?: string;
+      aboutBackgroundImage?: string;
+      aboutBackgroundImageMob?: string;
     },
     { [key: string]: string },
   ];
@@ -22,11 +29,20 @@ interface IAboutSection {
 const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
   const [presentationSection, socialLinks] = presentationSectionData;
 
+  const { width: windowWidth } = useWindowWidth();
+
+  const background =
+    Boolean(windowWidth) &&
+    windowWidth < 475 &&
+    presentationSection?.aboutBackgroundImageMob
+      ? `${STORAGE_URL}${presentationSection.aboutBackgroundImageMob}`
+      : `${STORAGE_URL}${presentationSection.aboutBackgroundImage}`;
+
   return (
     <section id="about" className="about overlay main">
       <div className="background-img about-background">
         {/* Background Image can be dynamic if needed */}
-        <CustomImage src={AboutBackground} alt="Background" />
+        <CustomImage src={background} alt="Background" />
       </div>
 
       <div className="container">

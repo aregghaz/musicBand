@@ -4,7 +4,6 @@ import React, { FC, useEffect, useState } from 'react';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
 import './TourSection.scss';
 import Button from '@uikit/Button/Button';
-import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import { formatDateToMonthAndDay } from '@utils/index';
 import Link from 'next/link';
 
@@ -13,15 +12,6 @@ interface ITourSection {
 }
 
 const TourSection: FC<ITourSection> = ({ concerts }) => {
-  const [activeTab, setActiveTab] = useState('1');
-  const [filteredConcerts, setFilteredConcerts] = useState([]);
-
-  useEffect(() => {
-    setFilteredConcerts(concerts.filter((el: any) => el.type === activeTab));
-  }, [activeTab]);
-
-  const handleTabClick = (tabId: string) => setActiveTab(tabId);
-
   return (
     <>
       <section id="concerts" className="tour main">
@@ -29,32 +19,12 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-8 col-md-10">
-              <ul className="block-tabs list-inline gap-one-bottom-sm text-center tour-switchers">
-                <li
-                  className={`list-inline-item ${
-                    activeTab === '1' ? 'active' : ''
-                  }`}
-                  onClick={() => handleTabClick('1')}
-                >
-                  <h5 className="uppercase mb-0">American Tour</h5>
-                </li>
-
-                <li
-                  className={`list-inline-item ${
-                    activeTab === '2' ? 'active' : ''
-                  }`}
-                  onClick={() => handleTabClick('2')}
-                >
-                  <h5 className="uppercase mb-0">Armenian Tour</h5>
-                </li>
-              </ul>
-
               {concerts && (
                 <ul className="block-tab">
                   <li className={`active`}>
                     <div className="block-content gap-one-top-sm text-left">
-                      {Object.keys(filteredConcerts).length > 0 ? (
-                        filteredConcerts.map(
+                      {Object.keys(concerts).length > 0 ? (
+                        concerts.map(
                           (
                             {
                               buyTicketLink,
@@ -74,8 +44,7 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
                                 </div>
                                 <div className="col-lg-4 col-md-4">
                                   <h6 className="mb-0 opc-70 uppercase">
-                                    {concertCity},{' '}
-                                    {activeTab === '1' ? 'USA' : 'AM'}
+                                    {concertCity}, USA
                                   </h6>
                                   <span>{concertPlace}</span>
                                 </div>
@@ -100,7 +69,7 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
                                   ) : null}
                                 </div>
                               </div>
-                              {idx !== filteredConcerts.length - 1 && <hr />}
+                              {idx !== concerts.length - 1 && <hr />}
                             </div>
                           )
                         )
@@ -115,7 +84,8 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
           </div>
         </div>
 
-        <div className="container">
+        {/* TODO: remove if no need in future */}
+        {/* <div className="container">
           <div className="row display-flex justify-content-center">
             <div className="col-12 col-lg-8 col-md-10">
               <div className="block-content gap-one-top-sm">
@@ -154,7 +124,7 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
     </>
   );

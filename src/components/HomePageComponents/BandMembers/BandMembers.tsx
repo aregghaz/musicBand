@@ -3,7 +3,6 @@
 import React, { FC, useState } from 'react';
 import Slider from 'react-slick';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
-import LazyLoadSection from '../../Common/LazyLoadSection/LazyLoadSection';
 import CustomImage from '@uikit/Image/Image';
 import './BandMembers.scss';
 import { STORAGE_URL } from '@utils/index';
@@ -32,13 +31,46 @@ const BandMembers: FC<IBandMember> = ({ data: members }) => {
     ? members.filter((member: any) => member.isActive)
     : [];
 
-  const sortedMembers = [...activeMembers].sort((a, b) => a.order - b.order);
+  const bandHead = activeMembers.find((member: any) => member.isHead) || null;
+
+  const sortedMembers = [...activeMembers]
+    .filter((member: any) => !member.isHead)
+    .sort((a, b) => a.order - b.order);
 
   return (
     <>
       <section id="band" className="band main py-5">
-        <SectionTitle title="Band Members" className="mt-5" />
-        <div className="container">
+        <SectionTitle title="Our Team" className="mt-5" />
+
+        {bandHead && (
+          <div className="band-head-container">
+            <h4>Head</h4>
+
+            <div className="band-head-wrapper">
+              <div
+                className="p-3 band-head"
+                onClick={() => handleShowMemberInfo(bandHead)}
+              >
+                <div className="block-member">
+                  <CustomImage
+                    src={`${STORAGE_URL}${bandHead.memberImage}`}
+                    alt="member img"
+                  />
+                  <div className="member-info text-center mt-2">
+                    <h6 className="uppercase mb-0">
+                      {bandHead.firstName} {bandHead.lastName}
+                    </h6>
+                    <span className="mt-0">{bandHead.role}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="container members-container">
+          <h4>Members</h4>
+
           {members && (
             <Slider {...sliderSettings}>
               {sortedMembers.map((member: any, index: number) => (

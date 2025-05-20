@@ -14,6 +14,13 @@ interface GalleryCategory {
   };
 }
 
+export const metadata = {
+  title: 'Music Lab',
+  openGraph: {
+    title: 'Blog',
+  },
+};
+
 export default async function GalleryPage({ params }: any) {
   const { id } = await params;
   const response = await fetch(`${BASE_URL}/gallery/categories/${id}`, {

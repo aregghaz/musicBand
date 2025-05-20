@@ -37,7 +37,7 @@ export const navigationItems = [
     link: '/#contact',
   },
   {
-    label: 'Band Members',
+    label: 'Our Team',
     link: '/#band',
   },
 ];

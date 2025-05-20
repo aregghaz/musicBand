@@ -43,7 +43,7 @@ const Nav: FC<INav> = ({ navItems, permissions }) => {
       Gallery: 'gallerySection',
       Blog: 'blogsSection',
       'News About Us': 'aboutUsNewsSection',
-      'Band Members': 'bandMembersSection',
+      'Our Team': 'bandMembersSection',
       Contact: 'contactsSection',
     };
 
