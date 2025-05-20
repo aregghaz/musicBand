@@ -18,3 +18,28 @@
 .member-info {
   border-radius: 0 0 12px 12px;
 }
+
+.band-head-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  align-items: center;
+  margin: 48px 0;
+
+  h4 {
+    font-size: 28px !important;
+  }
+  .band-head {
+    max-width: 400px;
+    max-height: 450px;
+  }
+}
+
+.members-container {
+
+  h4 {
+    text-align: center !important;
+    font-size: 28px !important;
+  }
+}
