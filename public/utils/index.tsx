@@ -12,6 +12,11 @@ export const navigationItems = [
     link: '/#about',
   },
   {
+    label: 'Our Team',
+    link: '/#band',
+  },
+
+  {
     label: 'Discography',
     link: '/#discography',
   },
@@ -29,17 +34,14 @@ export const navigationItems = [
   },
 
   {
-    label: 'News About Us',
+    label: 'About Us',
     link: '/#news-about-us',
   },
   {
     label: 'Contact',
     link: '/#contact',
   },
-  {
-    label: 'Our Team',
-    link: '/#band',
-  },
+ 
 ];
 
 export const formatDate = (isoString: string) => {

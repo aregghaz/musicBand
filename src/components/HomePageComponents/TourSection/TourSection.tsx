@@ -4,8 +4,9 @@ import React, { FC, useEffect, useState } from 'react';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
 import './TourSection.scss';
 import Button from '@uikit/Button/Button';
-import { formatDateToMonthAndDay } from '@utils/index';
+import { STORAGE_URL, formatDateToMonthAndDay } from '@utils/index';
 import Link from 'next/link';
+import CustomImage from '@uikit/Image/Image';
 
 interface ITourSection {
   concerts: any;
@@ -17,70 +18,75 @@ const TourSection: FC<ITourSection> = ({ concerts }) => {
       <section id="concerts" className="tour main">
         <SectionTitle title="Upcoming Concerts" />
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-8 col-md-10">
-              {concerts && (
-                <ul className="block-tab">
-                  <li className={`active`}>
-                    <div className="block-content gap-one-top-sm text-left">
-                      {Object.keys(concerts).length > 0 ? (
-                        concerts.map(
-                          (
-                            {
-                              buyTicketLink,
-                              concertCity,
-                              concertPlace,
-                              concertDate,
-                              vip,
-                            }: any,
-                            idx: number
-                          ) => (
-                            <div key={idx} className="block-content">
-                              <div className="row">
-                                <div className="col-lg-3 col-md-3">
-                                  <h4 className="switch-fot">
-                                    {formatDateToMonthAndDay(concertDate)}
-                                  </h4>
-                                </div>
-                                <div className="col-lg-4 col-md-4">
-                                  <h6 className="mb-0 opc-70 uppercase">
-                                    {concertCity}, USA
-                                  </h6>
-                                  <span>{concertPlace}</span>
-                                </div>
-                                <div className="col-12 col-lg-5 col-md-5 text-md-right">
-                                  {vip && (
+          <div className="concerts-block-wrapper">
+            {concerts && (
+              <div className="block-content gap-one-top-sm text-left">
+                {Object.keys(concerts).length > 0 ? (
+                  concerts.map(
+                    (
+                      {
+                        buyTicketLink,
+                        concertCity,
+                        concertPlace,
+                        concertDate,
+                        concertImage,
+                        vip,
+                      }: any,
+                      idx: number
+                    ) => (
+                      <div key={idx} className="block-content">
+                        <div className="concert-conent-wrapper">
+                          <div className="concert-image-wrapper">
+                            <CustomImage
+                              src={`${STORAGE_URL}${concertImage}`}
+                              alt={concertCity}
+                              className="blog-inner-image"
+                            />
+                          </div>
+
+                          <div className="concert-date">
+                            <h4 className="switch-fot">
+                              {formatDateToMonthAndDay(concertDate)}
+                            </h4>
+                          </div>
+                          <div className="concert-place">
+                            <h6 className="mb-0 opc-70 uppercase">
+                              {concertCity}, USA
+                            </h6>
+                            <span>{concertPlace}</span>
+                          </div>
+
+                          {/* <div className="text-md-right"> */}
+                          {/* {vip && (
                                     <Button bordered>
                                       <i className="icon-ticket"></i>VIP
                                     </Button>
-                                  )}
+                                  )} */}
 
-                                  {buyTicketLink ? (
-                                    <Link
-                                      href={buyTicketLink}
-                                      target="_blank"
-                                      rel="noopener"
-                                    >
-                                      <Button className="tour-button-spaced">
-                                        <i className="icon-ticket"></i>Buy
-                                        Ticket
-                                      </Button>
-                                    </Link>
-                                  ) : null}
-                                </div>
-                              </div>
-                              {idx !== concerts.length - 1 && <hr />}
-                            </div>
-                          )
-                        )
-                      ) : (
-                        <span>No concerts found</span>
-                      )}
-                    </div>
-                  </li>
-                </ul>
-              )}
-            </div>
+                          <div className="buy-link-button-wrapper">
+                            {buyTicketLink ? (
+                              <Link
+                                href={buyTicketLink}
+                                target="_blank"
+                                rel="noopener"
+                              >
+                                <Button className="tour-button-spaced">
+                                  <i className="icon-ticket"></i>Buy Ticket
+                                </Button>
+                              </Link>
+                            ) : null}
+                            {/* </div> */}
+                          </div>
+                        </div>
+                        {idx !== concerts.length - 1 && <hr />}
+                      </div>
+                    )
+                  )
+                ) : (
+                  <span>No concerts found</span>
+                )}
+              </div>
+            )}
           </div>
         </div>
 

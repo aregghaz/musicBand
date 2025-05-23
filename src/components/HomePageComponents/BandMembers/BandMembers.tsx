@@ -44,7 +44,7 @@ const BandMembers: FC<IBandMember> = ({ data: members }) => {
 
         {bandHead && (
           <div className="band-head-container">
-            <h4>Head</h4>
+            <h4>Artistic Director</h4>
 
             <div className="band-head-wrapper">
               <div
@@ -69,7 +69,7 @@ const BandMembers: FC<IBandMember> = ({ data: members }) => {
         )}
 
         <div className="container members-container">
-          <h4>Members</h4>
+          <h4>Musicians</h4>
 
           {members && (
             <Slider {...sliderSettings}>
