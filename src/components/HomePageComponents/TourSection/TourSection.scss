@@ -1,7 +1,190 @@
+// .concerts-block-wrapper {
+  
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+
+//   > div {
+//     max-width: 1000px;
+//     width: 100%;
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//     gap: 18px;
+//   }
+// }
+
+// .concert-conent-wrapper {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%;
+//   // justify-content: space-between;
+//   // align-items: center;
+//   gap: 18px;
+//   > div {
+//     width: 100%;
+//   }
+
+//   .concert-date {
+//     max-width: 25%;
+//   }
+// }
+
+// .tour-section-input {
+//   width: 100%;
+//   display: block;
+//   width: 100%;
+//   padding: 0.375rem 0.75rem;
+//   font-size: 1rem;
+//   line-height: 1.5;
+//   color: #ffffff !important;
+//   background-color: transparent;
+//   background-clip: padding-box;
+//   border: 2px solid rgba(255, 255, 255, 0.5);
+//   border-radius: 0.25rem;
+//   transition:
+//     border-color 0.15s ease-in-out,
+//     box-shadow 0.15s ease-in-out;
+
+//   &:focus {
+//     outline: 0;
+//     border: 2px solid rgba(255, 255, 255, 0.5);
+//   }
+
+//   &::placeholder {
+//     color: #b8b9bb !important;
+//   }
+// }
+// .tour-button-spaced {
+//   margin-left: 4px;
+// }
+
+
+// .card-body {
+//   padding: 3rem;
+//   @media (max-width: 476px) {
+//     padding: 1rem;
+//   }
+// }
+
+// .block-subscribe {
+//   p {
+//     @media (max-width: 380px) {
+//       font-size: 1.1rem !important;
+//     }
+//   }
+// }
+
+// .concert-image-wrapper {
+//   max-width: 320px;
+//   width: 100%;
+//   max-height: 320px;
+//   height: auto;
+//   img {
+//     position: static !important;
+//   }
+// }
+
+// .buy-link-button-wrapper {
+//   max-width: 120px;
+//   height: 70px;
+//   width: 100%;
+// }
+
+
+.concerts-block-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  > div {
+    max-width: 1000px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    align-items: stretch;
+  }
+}
+
+.concert-conent-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; 
+  // gap: 18px;
+  background: #1e242b;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  > div {
+    width: 100%;
+  }
+
+  .concert-date {
+    max-width: 100%;
+    h4 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+
+  .oncert-place {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    color: var(--Dark-Grey, #3c3c3c);
+    text-overflow: ellipsis;
+    font-family: Inter, serif;
+    align-self: stretch;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+
+  .concert-details {
+    flex-grow: 1;
+    h6 {
+      margin: 0;
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+    span {
+      display: block;
+      font-size: 0.9rem;
+    }
+  }
+
+  .buy-link-button-wrapper {
+    max-width: 120px;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: flex-end; 
+  }
+}
+
+.concert-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  overflow: hidden;
+  border-radius: 8px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: static !important;
+    object-fit: cover;
+    display: block;
+  }
+}
+
 .tour-section-input {
   width: 100%;
   display: block;
-  width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -23,13 +206,10 @@
     color: #b8b9bb !important;
   }
 }
+
 .tour-button-spaced {
   margin-left: 4px;
 }
-
-// .tour-switchers {
-//     display: flex !important;
-// }
 
 .card-body {
   padding: 3rem;
@@ -43,5 +223,16 @@
     @media (max-width: 380px) {
       font-size: 1.1rem !important;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .concerts-block-wrapper > div {
+    grid-template-columns: 1fr; /* Stack items on mobile */
+    gap: 12px;
+  }
+
+  .concert-conent-wrapper {
+    padding: 12px;
   }
 }
