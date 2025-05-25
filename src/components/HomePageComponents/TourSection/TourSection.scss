@@ -1,95 +1,4 @@
-// .concerts-block-wrapper {
-  
-//   width: 100%;
-//   display: flex;
-//   justify-content: center;
-
-//   > div {
-//     max-width: 1000px;
-//     width: 100%;
-//     display: grid;
-//     grid-template-columns: repeat(3, 1fr);
-//     gap: 18px;
-//   }
-// }
-
-// .concert-conent-wrapper {
-//   display: flex;
-//   flex-direction: column;
-//   height: 100%;
-//   // justify-content: space-between;
-//   // align-items: center;
-//   gap: 18px;
-//   > div {
-//     width: 100%;
-//   }
-
-//   .concert-date {
-//     max-width: 25%;
-//   }
-// }
-
-// .tour-section-input {
-//   width: 100%;
-//   display: block;
-//   width: 100%;
-//   padding: 0.375rem 0.75rem;
-//   font-size: 1rem;
-//   line-height: 1.5;
-//   color: #ffffff !important;
-//   background-color: transparent;
-//   background-clip: padding-box;
-//   border: 2px solid rgba(255, 255, 255, 0.5);
-//   border-radius: 0.25rem;
-//   transition:
-//     border-color 0.15s ease-in-out,
-//     box-shadow 0.15s ease-in-out;
-
-//   &:focus {
-//     outline: 0;
-//     border: 2px solid rgba(255, 255, 255, 0.5);
-//   }
-
-//   &::placeholder {
-//     color: #b8b9bb !important;
-//   }
-// }
-// .tour-button-spaced {
-//   margin-left: 4px;
-// }
-
-
-// .card-body {
-//   padding: 3rem;
-//   @media (max-width: 476px) {
-//     padding: 1rem;
-//   }
-// }
-
-// .block-subscribe {
-//   p {
-//     @media (max-width: 380px) {
-//       font-size: 1.1rem !important;
-//     }
-//   }
-// }
-
-// .concert-image-wrapper {
-//   max-width: 320px;
-//   width: 100%;
-//   max-height: 320px;
-//   height: auto;
-//   img {
-//     position: static !important;
-//   }
-// }
-
-// .buy-link-button-wrapper {
-//   max-width: 120px;
-//   height: 70px;
-//   width: 100%;
-// }
-
+@import '../../../../app/styles/Base/base.scss';
 
 .concerts-block-wrapper {
   width: 100%;
@@ -110,7 +19,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; 
+  height: 100%;
   // gap: 18px;
   background: #1e242b;
   border-radius: 8px;
@@ -159,17 +68,27 @@
   }
 
   .buy-link-button-wrapper {
-    max-width: 120px;
     width: 100%;
     height: 80px;
     display: flex;
-    align-items: flex-end; 
+    align-items: flex-end;
+
+    button {
+      background: $primary-color !important;
+      border: 2px solid $primary-color;
+      color: $primary-color;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out !important;
+      &:hover {
+        transition: all 0.3s ease-in-out !important;
+      }
+    }
   }
 }
 
 .concert-image-wrapper {
   width: 100%;
-  aspect-ratio: 1 / 1; 
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 8px;
 
