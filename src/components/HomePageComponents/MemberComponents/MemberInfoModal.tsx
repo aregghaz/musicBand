@@ -30,6 +30,7 @@ interface IMember {
   webpageLink?: string;
   wikipediaLink?: string;
   youtubeLink?: string;
+  formattedDescription?: string;
 }
 
 interface IMemberInfoModalProps {
@@ -75,6 +76,9 @@ const MemberInfoModal: FC<IMemberInfoModalProps> = ({ member, closeModal }) => {
                   'webpage',
                   'wikipedia',
                   'youtube',
+                  'spotify',
+                  'tiktok',
+                  'appleMusic',
                 ].map((key, i) => {
                   const iconMap: { [key: string]: string } = {
                     facebook: 'facebook',
@@ -82,6 +86,9 @@ const MemberInfoModal: FC<IMemberInfoModalProps> = ({ member, closeModal }) => {
                     wikipedia: 'wikipedia',
                     youtube: 'youtube',
                     webpage: 'chrome',
+                    tiktok: 'tumblr',
+                    spotify: 'spotify',
+                    appleMusic: 'apple',
                   };
 
                   const linkKey = `${key}Link` as keyof IMember;
@@ -103,7 +110,8 @@ const MemberInfoModal: FC<IMemberInfoModalProps> = ({ member, closeModal }) => {
             )}
 
             <div className="member-description-wrapper">
-              <p className="member-description">{member.description}</p>
+              {/* <ReactMarkdown>{member.formattedDescription || ''}</ReactMarkdown> */}
+             <p className="member-description">{member.description}</p>
             </div>
           </div>
         </div>

@@ -1,0 +1,52 @@
+// Slider.scss
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #1e242b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+
+  span {
+
+    font-size: 18px;
+    @media (max-width:576px) {
+        font-size: 14px;
+    }
+   
+  }
+
+  &:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  &.next {
+    right: -28px;
+  }
+
+  &.prev {
+    left: -28px;
+  }
+
+  @media (max-width: 576px) {
+    &.next {
+      right: -5px;
+    }
+
+    &.prev {
+      left: -5px;
+    }
+  }
+}

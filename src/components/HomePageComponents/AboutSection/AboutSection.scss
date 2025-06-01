@@ -6,6 +6,20 @@
   }
 }
 
+.about-main-texts {
+  padding: 0 16px;
+}
+
+.about-main-heading {
+  @media (max-width:576px) {
+    font-size: 1.875rem !important;
+  }
+}
+
+.about-main-description {
+  white-space: pre-line;
+}
+
 .location-block {
     background: #13181d !important;
 }

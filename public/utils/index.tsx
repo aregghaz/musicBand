@@ -41,7 +41,6 @@ export const navigationItems = [
     label: 'Contact',
     link: '/#contact',
   },
- 
 ];
 
 export const formatDate = (isoString: string) => {
@@ -60,10 +59,12 @@ export const formatDateToMonthAndDay = (
   if (!dateString) return null;
 
   const match = dateString.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (!match) return ''; 
+  if (!match) return '';
 
   const [, year, month, day] = match;
-  const date = new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
+  const date = new Date(
+    Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day))
+  );
   if (isNaN(date.getTime())) return '';
 
   if (monthNumber) {
@@ -98,4 +99,19 @@ export const isValidPhone = (phone: string | null) => {
 
 export const isValidEmail = (email: string | null) => {
   return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+};
+
+export const formatDescription = (text?: string | null) => {
+  if (!text) return '';
+
+  const escapeMap: any = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  const escapedText = text.replace(/[&<>"']/g, (char) => escapeMap[char]);
+
+  return escapedText.replace(/\n/g, '<br>');
 };
