@@ -1,4 +1,4 @@
-import { NextArrow, PrevArrow } from "@uikit/SliderArrows/SliderArrows";
+import { NextArrow, PrevArrow } from '@uikit/SliderArrows/SliderArrows';
 
 export const sliderSettings = {
   dots: false,

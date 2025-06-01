@@ -111,7 +111,7 @@ const MemberInfoModal: FC<IMemberInfoModalProps> = ({ member, closeModal }) => {
 
             <div className="member-description-wrapper">
               {/* <ReactMarkdown>{member.formattedDescription || ''}</ReactMarkdown> */}
-             <p className="member-description">{member.description}</p>
+              <p className="member-description">{member.description}</p>
             </div>
           </div>
         </div>

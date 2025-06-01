@@ -52,7 +52,9 @@ const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
               <h1 className="uppercase text-white about-main-heading">
                 {presentationSection?.title || ''}
               </h1>
-              <p className="about-main-description">{presentationSection?.description || ''}</p>
+              <p className="about-main-description">
+                {presentationSection?.description || ''}
+              </p>
 
               <ul className="block-social list-inline mb-4 mb-lg-0">
                 {socialLinks &&
