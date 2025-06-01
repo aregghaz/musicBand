@@ -48,11 +48,11 @@ const AboutSection: FC<IAboutSection> = ({ presentationSectionData }) => {
       <div className="container">
         <div className="row vertical-align text-center">
           <div className="w-100">
-            <div className="front-p">
-              <h1 className="uppercase text-white">
+            <div className="front-p about-main-texts">
+              <h1 className="uppercase text-white about-main-heading">
                 {presentationSection?.title || ''}
               </h1>
-              <p className="">{presentationSection?.description || ''}</p>
+              <p className="about-main-description">{presentationSection?.description || ''}</p>
 
               <ul className="block-social list-inline mb-4 mb-lg-0">
                 {socialLinks &&
