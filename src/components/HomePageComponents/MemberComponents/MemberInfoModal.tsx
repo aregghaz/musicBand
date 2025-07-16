@@ -1,11 +1,12 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Modal from '@uikit/Modal/Modal';
 import CustomImage from '@uikit/Image/Image';
 import { STORAGE_URL } from '@utils/index';
 import './MemberInfoModal.scss';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const ResponsiveMasonry = dynamic(
   () => import('react-responsive-masonry').then((mod) => mod.ResponsiveMasonry),
@@ -46,7 +47,10 @@ const MemberInfoModal: FC<IMemberInfoModalProps> = ({ member, closeModal }) => {
     member.wikipediaLink ||
     member.youtubeLink;
 
+    const [selectedImg, setSelectedImg] = useState<string | null>(null);
+
   return (
+    <>
     <Modal closeModal={closeModal} className="member-modal-wrapper">
       <div className="member-info-modal">
         <div className="member-details-wrapper">
@@ -121,13 +125,14 @@ const MemberInfoModal: FC<IMemberInfoModalProps> = ({ member, closeModal }) => {
             <h4>Gallery</h4>
             <div className="gallery-scroll-container">
               <ResponsiveMasonry
-                columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+                columnsCountBreakPoints={{ 750: 3, 900: 6 }}
               >
                 <Masonry gutter="10px">
                   {member?.memberImages?.map((image, index) => (
                     <div
                       key={`${image}-${index}`}
                       className="modal-band-member-image"
+                      onClick={()=>setSelectedImg(`${STORAGE_URL}${image}`)}
                     >
                       <CustomImage
                         src={`${STORAGE_URL}${image}`}
@@ -138,11 +143,38 @@ const MemberInfoModal: FC<IMemberInfoModalProps> = ({ member, closeModal }) => {
                   ))}
                 </Masonry>
               </ResponsiveMasonry>
+             
             </div>
+
           </div>
         )}
       </div>
     </Modal>
+     {
+              selectedImg 
+                ?
+                  <div
+                    className="modal-overlay"
+                    onClick={() => setSelectedImg(null)}
+                  >
+                     
+                     <div style={{}}>
+                         <Image
+                          className="masonry-img"
+                          src={selectedImg}
+                          alt="selected"
+                          width={700}
+                          height={700}
+                          objectFit='contain'
+                          placeholder="blur"
+                          blurDataURL="https://picsum.photos/id/237/200/300"
+                        />
+                     </div>
+                  </div>
+               :
+                   null
+      }
+    </>
   );
 };
 
