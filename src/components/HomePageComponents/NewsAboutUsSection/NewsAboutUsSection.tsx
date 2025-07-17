@@ -1,5 +1,6 @@
 import CustomImage from '@uikit/Image/Image';
 import SectionTitle from '@uikit/SectionTitle/SectionTitle';
+import NewsAboutUsSectionText from './NewAboutUsSectionText';
 import { STORAGE_URL, formatDate } from '@utils/index';
 import Link from 'next/link';
 import React, { FC } from 'react';
@@ -22,65 +23,17 @@ const NewsAboutUsSection: FC<IBlogsSection> = ({ aboutUsNews }) => {
                 className="row align-items-center justify-content-around"
               >
                 {index % 2 === 0 ? (
-                  <>
-                    <div className="col-12 col-md-6 order-md-2 news-about-image-content-wrapper">
-                      <div className="block-content ">
-                        {/* <a href={post.link}> */}
-                        <CustomImage
-                          alt={post.title}
-                          className="img-fluid scaled"
-                          src={`${STORAGE_URL}${post.image}`}
-                        />
-                        {/* </a> */}
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6 col-lg-5 order-md-1 text-left news-about-content-wrapper">
-                      <div className="block-content">
-                        <span className="mb-2 opc-70">
-                          {formatDate(post?.createdAt)}
-                        </span>
-                        <h2>{post.title}</h2>
-                        <p className="lead">{post.description}</p>
-                        <Link
-                          href={post.topicLink}
-                          target="_blank"
-                          className="link colored-link mt-3 cursor-pointer"
-                        >
-                          More info ›
-                        </Link>
-                      </div>
-                    </div>
-                  </>
+                  <NewsAboutUsSectionText 
+                      post={post} 
+                      classNameImage='col-12 col-md-6 order-md-2 news-about-image-content-wrapper'
+                      classNameText='col-12 col-md-6 col-lg-5 order-md-1 text-left news-about-content-wrapper'
+                  />
                 ) : (
-                  <>
-                    <div className="col-12 col-md-6 order-1 news-about-image-content-wrapper">
-                      <div className="block-content">
-                        {/* <a href={post.link}> */}
-                        <CustomImage
-                          alt={post.title}
-                          className="img-fluid scaled"
-                          src={`${STORAGE_URL}${post.image}`}
-                        />
-                        {/* </a> */}
-                      </div>
-                    </div>
-                    <div className="col-12 col-md-6 col-lg-5 order-2 text-left news-about-content-wrapper">
-                      <div className="block-content">
-                        <span className="mb-2 opc-70">
-                          {formatDate(post?.createdAt)}
-                        </span>
-                        <h2>{post.title}</h2>
-                        <p className="lead">{post.description}</p>
-                        <Link
-                          href={post.topicLink}
-                          target="_blank"
-                          className="link colored-link mt-3"
-                        >
-                          More info ›
-                        </Link>
-                      </div>
-                    </div>
-                  </>
+                   <NewsAboutUsSectionText 
+                      post={post} 
+                      classNameImage='col-12 col-md-6 order-1 news-about-image-content-wrapper'
+                      classNameText='col-12 col-md-6 col-lg-5 order-2 text-left news-about-content-wrapper'
+                  />
                 )}
               </li>
             ))}

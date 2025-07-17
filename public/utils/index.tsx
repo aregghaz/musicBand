@@ -15,7 +15,10 @@ export const navigationItems = [
     label: 'Our Team',
     link: '/#band',
   },
-
+  {
+    label: 'About Us',
+    link: '/#news-about-us',
+  },
   {
     label: 'Discography',
     link: '/#discography',
@@ -31,11 +34,6 @@ export const navigationItems = [
   {
     label: 'Blog',
     link: '/#blog',
-  },
-
-  {
-    label: 'About Us',
-    link: '/#news-about-us',
   },
   {
     label: 'Contact',
