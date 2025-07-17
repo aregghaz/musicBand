@@ -24,8 +24,6 @@ async function getData() {
 export default async function Layout({ children }: { children: ReactNode }) {
   const [permissions, favicon] = await getData();
 
-  console.log(favicon, 'favicon');
-
   return (
     <html lang="en">
       <head>
