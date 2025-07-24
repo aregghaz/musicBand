@@ -28,26 +28,25 @@ export default function GuestModal() {
           onClick={() => dispatch(closeGuestModal())}
           style={{
             position: 'absolute',
-            top: 16,
+            top: 0,
             right: 24,
             fontSize: 28,
             background: 'none',
             border: 'none',
             cursor: 'pointer',
+            zIndex: 999,
           }}
         >
           ×
         </button>
 
-        {/* Left block */}
         <div className="left">
           <Image
             src={selectedGuest.imageUrl}
             alt={selectedGuest.name}
             width={300}
             height={400}
-          />{' '}
-          {/* Установите размеры */}
+          />
           <div className="info">
             <h3>{selectedGuest.fullName}</h3>
             <div>
@@ -60,7 +59,6 @@ export default function GuestModal() {
           </div>
         </div>
 
-        {/* Right block */}
         <div className="right">
           <div className="gallery">
             <h4>Gallery</h4>

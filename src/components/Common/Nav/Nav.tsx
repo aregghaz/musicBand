@@ -91,7 +91,7 @@ const Nav: FC<INav> = ({ navItems, permissions }) => {
                 className="scroll list-inline-item"
                 href="/performance-services"
               >
-                performance-services
+                performance services
               </Link>
             </li>
             <li className="block-helper">

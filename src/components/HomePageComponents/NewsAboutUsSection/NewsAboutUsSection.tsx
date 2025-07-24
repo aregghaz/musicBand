@@ -23,16 +23,16 @@ const NewsAboutUsSection: FC<IBlogsSection> = ({ aboutUsNews }) => {
                 className="row align-items-center justify-content-around"
               >
                 {index % 2 === 0 ? (
-                  <NewsAboutUsSectionText 
-                      post={post} 
-                      classNameImage='col-12 col-md-6 order-md-2 news-about-image-content-wrapper'
-                      classNameText='col-12 col-md-6 col-lg-5 order-md-1 text-left news-about-content-wrapper'
+                  <NewsAboutUsSectionText
+                    post={post}
+                    classNameImage="col-12 col-md-6 order-md-2 news-about-image-content-wrapper"
+                    classNameText="col-12 col-md-6 col-lg-5 order-md-1 text-left news-about-content-wrapper"
                   />
                 ) : (
-                   <NewsAboutUsSectionText 
-                      post={post} 
-                      classNameImage='col-12 col-md-6 order-1 news-about-image-content-wrapper'
-                      classNameText='col-12 col-md-6 col-lg-5 order-2 text-left news-about-content-wrapper'
+                  <NewsAboutUsSectionText
+                    post={post}
+                    classNameImage="col-12 col-md-6 order-1 news-about-image-content-wrapper"
+                    classNameText="col-12 col-md-6 col-lg-5 order-2 text-left news-about-content-wrapper"
                   />
                 )}
               </li>
