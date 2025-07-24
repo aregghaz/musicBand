@@ -3,7 +3,9 @@ import './styles/globals.scss';
 import Footer from '@components/Common/Footer/Footer';
 import ScrollUp from '@uikit/ScrollUp/ScrollUp';
 import Nav from '@components/Common/Nav/Nav';
+
 import { BASE_URL, STORAGE_URL, navigationItems } from '@utils/index';
+import { Providers } from '../src/store/Providers';
 
 async function getData() {
   const res = await fetch(`${BASE_URL}/home-sections-manage`, {
@@ -32,11 +34,13 @@ export default async function Layout({ children }: { children: ReactNode }) {
         <link rel="icon" href={`${STORAGE_URL}${favicon.faviconLink}`} />
       </head>
       <body>
-        <Nav navItems={navigationItems} permissions={permissions.data} />
-        <main>{children}</main>
+        <Providers>
+          <Nav navItems={navigationItems} permissions={permissions.data} />
+          <main>{children}</main>
 
-        <Footer />
-        <ScrollUp />
+          <Footer />
+          <ScrollUp />
+        </Providers>
       </body>
     </html>
   );
