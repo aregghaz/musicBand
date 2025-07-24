@@ -3,7 +3,7 @@ import { TeamItem } from '../slices/teamItemSlice';
 
 export type ModalState = {
   isOpen: boolean;
-  selectedItem?: TeamItem;
+  selectedItem?: TeamItem | null;
 };
 
 const initialState: ModalState = {

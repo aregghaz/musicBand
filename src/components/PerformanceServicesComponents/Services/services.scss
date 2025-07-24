@@ -1,0 +1,134 @@
+@import "app/styles/Base/base";
+
+.services {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background-image: url("/images/serviceBg.jpeg");
+  background-size: cover;
+  background-position: center;
+
+  & > .serviceImg {
+    object-fit: cover;
+    filter: grayscale(80%) blur(3px);
+  }
+
+  & > .globWrapper {
+    width: 100%;
+    height: auto;
+    background-color: $transparentBgColor200;
+    top: 0;
+    padding: 50px 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @media (max-width: 720px) {
+      padding: 50px 3%;
+    }
+
+
+    & > .topContent {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      padding: 0 30px;
+
+      @media (max-width: 720px) {
+        flex-direction: column;
+        height: auto;
+      }
+
+      & > .leftContent {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: center;
+
+        @media (max-width: 720px) {
+          width: 100%;
+        }
+
+        & > p {
+          font-size: 18px;
+          font-family: Oswald, sans-serif;
+          color: $buttonColor;
+          font-style: italic;
+
+          @media (max-width: 720px) {
+            text-align: center;
+          }
+        }
+
+        & > h2 {
+          font-family: Oswald, sans-serif;
+          font-size: 28px;
+          color: $textColor200;
+          text-transform: uppercase;
+
+          @media (max-width: 720px) {
+            text-align: center;
+          }
+
+          & > br {
+            @media (max-width: 1110px) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      & > .rightContent {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        @media (max-width: 720px) {
+          width: 100%;
+          align-items: flex-start;
+          justify-content: center;
+        }
+
+        & > p {
+          width: 70%;
+          color: $textColor200;
+          font-size: 16px;
+          font-family: Oswald, sans-serif;
+          text-align: right;
+          margin-top: 30px;
+
+          @media (max-width: 1110px) {
+            width: 90%;
+            margin-top: 50px;
+            font-size: 14px;
+          }
+
+          @media (max-width: 720px) {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .contentContainer {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); // 3 items per row on desktop
+      gap: 20px; // space between items
+      justify-items: center; // center each item inside its grid cell
+      padding: 1rem;
+
+      @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr); // 2 per row on tablet
+      }
+
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr; // 1 per row on mobile
+      }
+    }
+  }
+}

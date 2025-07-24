@@ -1,0 +1,54 @@
+@import "app/styles/Base/base";
+
+.rek {
+  width: 100%;
+  height: 60vh;
+  background-image: url("/images/rekImage.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+
+  .rekWrapper {
+    width: 100%;
+    height: 100%;
+    background-color: $transparentBgColor;
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    @media (max-width: 620px) {
+      padding: 0 15px;
+    }
+
+    & > h1 {
+      color: $textColor200;
+      font-size: 36px;
+      text-transform: uppercase;
+      text-align: center;
+      font-family: Oswald, sans-serif;
+    }
+
+    & > h2 {
+      color: $buttonColor;
+      font-size: 28px;
+      text-transform: capitalize;
+      text-align: center;
+      font-family: Oswald, sans-serif;
+      font-style: italic;
+    }
+
+    & > p {
+      color: $textColor200;
+      font-size: 22px;
+      text-align: center;
+      font-family: Roboto, sans-serif;
+
+      @media (max-width: 530px) {
+        font-size: 16px;
+      }
+    }
+  }
+}
