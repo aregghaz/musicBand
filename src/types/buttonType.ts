@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type ButtonType = {
   buttonWidth?: number;
   buttonHeight?: number;

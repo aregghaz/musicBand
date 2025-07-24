@@ -6,6 +6,8 @@ import Portfolio from '@components/PerformanceServicesComponents/Portfolio/Portf
 import OurTeam from '@components/PerformanceServicesComponents/OurTeam/OurTeam';
 import RekSection from '@components/PerformanceServicesComponents/RekSection/RekSection';
 import Services from '@components/PerformanceServicesComponents/Services/Services';
+import GuestArtists from '@components/PerformanceServicesComponents/GuestArtists/GuestArtists';
+import Contact from '@components/PerformanceServicesComponents/Contact/Contact';
 
 const PerformanceServicesPage = () => {
   return (
@@ -14,6 +16,8 @@ const PerformanceServicesPage = () => {
       <OurTeam />
       <RekSection />
       <Services />
+      <GuestArtists />
+      <Contact />
     </main>
   );
 };
