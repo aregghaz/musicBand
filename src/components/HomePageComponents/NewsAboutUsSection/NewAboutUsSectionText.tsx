@@ -17,16 +17,14 @@ const NewsAboutUsSectionText: FC<INewsAboutUsSectionText> = ({
   classNameText,
 }) => {
   return (
-    <div className="row align-items-center justify-content-around">
+    <div className="flex-row align-items-center">
       <div className={classNameImage}>
-        <div className="block-content ">
-          {/* <a href={post.link}> */}
+        <div className="block-content">
           <CustomImage
             alt={post.title}
             className="img-fluid scaled"
             src={`${STORAGE_URL}${post.image}`}
           />
-          {/* </a> */}
         </div>
       </div>
       <div className={classNameText}>
