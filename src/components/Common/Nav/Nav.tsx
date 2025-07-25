@@ -86,6 +86,14 @@ const Nav: FC<INav> = ({ navItems, permissions }) => {
                 </Link>
               </li>
             ))}
+            <li onClick={hamdleToggleMenu}>
+              <Link
+                className="scroll list-inline-item"
+                href="/performance-services"
+              >
+                performance services
+              </Link>
+            </li>
             <li className="block-helper">
               <a href="#album" className="scroll">
                 <span>

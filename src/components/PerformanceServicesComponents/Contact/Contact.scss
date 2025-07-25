@@ -1,0 +1,194 @@
+@import "app/styles/Base/base";
+
+.about {
+  width: 100%;
+  height: 70vh;
+  background-color: $globalColor;
+  padding: 0 10%;
+
+  @media (max-width: 1260px) {
+    padding: 0 5%;
+  }
+
+  @media (max-width: 1150px) {
+    padding: 0 1%;
+  }
+
+  @media (max-width: 1024px) {
+    height: auto;
+  }
+
+  & > .topContainer {
+    width: 100%;
+    height: 80%;
+    display: flex;
+
+    @media (max-width: 1024px) {
+      height: auto;
+      flex-direction: column;
+      padding: 10px;
+      align-items: center;
+    }
+
+    & > .aboutInfoWrapper {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+
+      @media (max-width: 1024px) {
+        width: 100%;
+        padding: 0 5%;
+      }
+
+      & > h3 {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: $textColor300;
+        font-style: italic;
+        font-family: Oswald, sans-serif;
+
+        @media (max-width: 1024px) {
+          font-size: 10px;
+        }
+      }
+
+      & > h2 {
+        font-size: 32px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: $globTextColor;
+        font-family: Oswald, sans-serif;
+
+        @media (max-width: 1024px) {
+          font-size: 24px;
+        }
+      }
+
+      & > p {
+        font-size: 14px;
+        color: $textColor200;
+        font-family: Roboto, sans-serif;
+        padding-right: 20px;
+
+        @media (max-width: 1024px) {
+          font-size: 10px;
+        }
+      }
+
+    }
+
+    & > .aboutSliderWrapper {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 20px;
+
+      @media (max-width: 1024px) {
+        width: 100%;
+        padding: 20px 0;
+      }
+
+    }
+  }
+
+  & > .lastInfo {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    gap: 10px;
+
+    @media (max-width: 462px) {
+      flex-direction: column;
+      gap: 0;
+    }
+
+
+    & > div {
+      width: 33.3%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 0 10px;
+
+      @media (max-width: 1024px) {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      @media (max-width: 462px) {
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+      }
+
+
+      & > span {
+        display: block;
+        width: 1px;
+        height: 60%;
+        background-color: rgba(204, 204, 204, 0.43);
+
+        @media (max-width: 1024px) {
+          display: none;
+        }
+      }
+
+      & > h2 {
+        font-size: 59px;
+        font-family: Oswald, sans-serif;
+        background: $gradient200;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+
+        @media (max-width: 720px) {
+          font-size: 45px;
+        }
+      }
+
+      & > p {
+        font-size: 22px;
+        color: $textColor200;
+        font-family: Oswald, sans-serif;
+
+        @media (max-width: 1200px) {
+          font-size: 18px;
+        }
+
+        @media (max-width: 1024px) {
+          height: auto;
+          padding: 25px;
+          text-align: center;
+        }
+
+        @media (max-width: 720px) {
+          font-size: 15px;
+        }
+
+        @media (max-width: 520px) {
+          font-size: 12px;
+        }
+
+        @media (max-width: 462px) {
+          font-size: 100%;
+        }
+      }
+    }
+  }
+
+
+}
+
+.aboutSliderWrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  overflow: hidden;
+}

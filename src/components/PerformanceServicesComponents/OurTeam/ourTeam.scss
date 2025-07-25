@@ -1,0 +1,111 @@
+@import "app/styles/Base/base";
+
+.ourTeam {
+  width: 100%;
+  height: auto;
+  padding: 20px 10%;
+  background-color: $globalColor;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 800px) {
+    padding: 20px 5%;
+  }
+
+  @media (max-width: 520px) {
+    padding: 20px 2%;
+  }
+
+  .teamHeader {
+    width: 100%;
+    height: 10%;
+    //border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 730px) {
+      flex-direction: column;
+    }
+
+    & > h2 {
+      font-size: 32px;
+      text-transform: uppercase;
+      font-family: Oswald, sans-serif;
+      font-weight: 500;
+      color: transparent;
+      background-image: $gradient300;
+      background-clip: text;
+      -webkit-background-clip: text;
+
+      @media (max-width: 1110px) {
+        font-size: 26px;
+      }
+
+      @media (max-width: 880px) {
+        font-size: 20px;
+      }
+    }
+
+    & > .catalogMenu {
+      width: 60%;
+      height: 50px;
+
+      & > ul {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        justify-content: flex-end;
+
+        @media (max-width: 730px) {
+          justify-content: center;
+        }
+
+        @media (max-width: 400px) {
+          gap: 20px;
+        }
+
+        & > li {
+          color: $textColor200;
+          font-family: Roboto, sans-serif;
+          font-size: 18px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: 0.5s;
+
+          @media (max-width: 400px) {
+            font-size: 14px;
+          }
+
+          &:hover {
+            color: $buttonColor;
+          }
+        }
+
+        & > .active {
+          color: $buttonColor;
+
+        }
+      }
+
+    }
+  }
+
+  .teamBody {
+    width: 100%;
+    max-height: 1040px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 5px;
+      background-color: rgba(255, 255, 255, 0.565);
+      border-radius: 8px;
+    }
+  }
+}
