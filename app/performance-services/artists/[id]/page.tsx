@@ -34,17 +34,28 @@ export default function ArtistPage() {
           <div className="rightWrapper">
             <h3>Gallery</h3>
             <div className="gallery">
-              {artist.gallery?.map((imgUrl, index) => (
-                <div className="galleryItem" key={index}>
-                  <Image
-                    src={imgUrl}
-                    alt={`Gallery ${index}`}
-                    width={200}
-                    height={200}
-                    onClick={() => setModalImage(imgUrl)}
-                  />
-                </div>
-              ))}
+              <Masonry
+                breakpointCols={{
+                  default: 7,
+                  1200: 5,
+                  1024: 3,
+
+                }}
+                className="masonry-grid"
+                columnClassName="masonry-column"
+              >
+                {artist.gallery?.map((imgUrl, index) => (
+                  <div className="galleryItem" key={index}>
+                    <Image
+                      src={imgUrl}
+                      alt={`Gallery ${index}`}
+                      width={200}
+                      height={200}
+                      onClick={() => setModalImage(imgUrl)}
+                    />
+                  </div>
+                ))}
+              </Masonry>
             </div>
             <div className="reviews">
               <h3>Reviews</h3>

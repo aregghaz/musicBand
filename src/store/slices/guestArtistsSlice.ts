@@ -11,9 +11,9 @@ export type GuestArtistType = {
   phone?: string;
   mail?: string;
   description?: string;
-  imageUrl: string; // Изменили с StaticImageData на string
+  imageUrl: string;
   videoUrls: string[];
-  galleryImages: string[]; // Изменили с StaticImageData на string
+  galleryImages: string[];
 };
 
 interface GuestArtistsState {

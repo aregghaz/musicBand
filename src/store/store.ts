@@ -3,7 +3,7 @@ import aboutReducer from './slices/aboutSlice';
 import buttonReducer from './slices/buttonSlice';
 import mediaReducer from './slices/mediaSlice';
 import menuReducer from './slices/menuSlice';
-import socLinksReducer from './slices/socLinksSlice';
+// import socLinksReducer from './slices/socLinksSlice';
 import teamMenuReducer from './slices/teamMenuSlice';
 import teamItemsReducer from './slices/teamItemSlice';
 import modalReducer from './slices/modalSlice';
@@ -18,7 +18,7 @@ export const store = configureStore({
     button: buttonReducer,
     media: mediaReducer,
     menu: menuReducer,
-    soc: socLinksReducer,
+    // soc: socLinksReducer,
     teamMenu: teamMenuReducer,
     teamItems: teamItemsReducer,
     modal: modalReducer,
