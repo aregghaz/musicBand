@@ -1,0 +1,155 @@
+@import "app/styles/Base/base";
+
+.guest {
+  width: 100%;
+  height: auto;
+  background-color: $globalColor;
+  padding: 50px 10%;
+
+  @media (max-width: 1500px) {
+    padding: 50px 5%;
+  }
+
+  @media (max-width: 1250px) {
+    padding: 50px 0%;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 20px 0 0 0;
+  }
+
+  & > .topTitle {
+    width: 100%;
+    height: auto;
+    text-align: center;
+
+    & > h2 {
+      color: #494949;
+      font-family: Oswald, sans-serif;
+      font-size: 38px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 7px;
+
+      @media (max-width: 422px) {
+        font-size: 34px;
+      }
+    }
+  }
+
+  .globContainer {
+    position: relative;
+
+    .swiper-wrapper {
+      position: relative;
+    }
+
+    .swiper {
+      padding: 5rem 0;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      transition: transform 0.4s ease;
+
+      .guestCard {
+        transform: scale(1);
+      }
+    }
+
+    .swiper-slide-active .guestCard {
+      transform: scale(1.1);
+      z-index: 2;
+    }
+
+    .guestCard {
+      position: relative;
+      width: 350px;
+      height: 550px;
+      border-radius: 30px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.4s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+      @media (max-width: 1250px) {
+        width: 300px;
+        height: 450px;
+      }
+
+      @media (max-width: 422px) {
+        width: 250px;
+        height: 350px;
+      }
+
+      .leftLabel {
+        width: 80px;
+        height: 150px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #1a1a1a;
+        border-top-right-radius: 16px;
+        padding: 1rem 1.5rem;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        font-family: 'Oswald', sans-serif;
+
+        @media (max-width: 980px) {
+          width: 60px;
+          height: 120px;
+          padding: 1rem 1rem;
+        }
+
+        p {
+          font-size: 1.1rem;
+          color: #ffc857;
+          font-weight: bold;
+          margin: 0;
+
+          @media (max-width: 980px) {
+            font-size: 0.8rem;
+          }
+        }
+
+        span {
+          font-size: 0.8rem;
+          color: #aaa;
+        }
+      }
+    }
+
+    /* Стили для стандартных стрелок Swiper */
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      color: #fff;
+
+      &:after {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+
+    .swiper-button-prev {
+      left: 0;
+    }
+
+    .swiper-button-next {
+      right: 0;
+    }
+
+
+  }
+}

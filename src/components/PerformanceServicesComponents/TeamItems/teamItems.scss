@@ -1,0 +1,268 @@
+@import "app/styles/Base/base";
+
+.teamItems {
+  width: 100%;
+  padding: 1rem;
+  background-color: #1a1a1a;
+  color: #fff;
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); // 👈 3 items per row
+  gap: 1rem;
+  justify-content: center;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); // 2 per row on tablets
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr; // 1 per row on mobile
+  }
+}
+
+.teamItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #222222;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-top: 0.2px solid rgba(198, 198, 198, 0.49);
+  max-width: 400px;
+  width: 100%;
+  height: 500px;
+  cursor: pointer;
+
+  &:hover .itemImage > img {
+    transform: rotate(5deg) scale(1.1);
+  }
+
+  .itemImage {
+    width: 100%;
+    aspect-ratio: 1 / 5;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      transition: .5s;
+
+    }
+  }
+
+
+  .itemDescription {
+    width: 100%;
+    height: 180px;
+    //border: 1px solid red;
+
+    h2 {
+      font-size: 1.3rem;
+      margin: 20px 0;
+      color: #fff;
+      font-weight: 500;
+      line-height: 0;
+      letter-spacing: 0.05em;
+    }
+
+    p {
+      margin: 0;
+      color: $textColor200;
+      font-size: 0.8rem;
+      font-family: Roboto, sans-serif;
+
+    }
+  }
+
+  .itemStatus {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.9rem;
+    color: $textColor200;
+
+
+    .author,
+    .date {
+      color: $buttonColor;
+      font-family: Roboto, sans-serif;
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  max-width: 1200px;
+  width: 90%;
+  min-width: 320px;
+  height: 85vh;
+  position: relative;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @media (min-width: 551px) {
+    flex-direction: row;
+  }
+
+
+  .modalWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+
+    @media (min-width: 551px) {
+      flex-direction: row;
+    }
+
+    .imageWrapper {
+      width: 400px;
+      height: 100%;
+      position: relative;
+
+      @media (max-width: 550px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .imgContainer {
+        width: 100%;
+        height: 75%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      & > .infoBottomContainer {
+        width: 90%;
+        position: absolute;
+        left: 5%;
+        border-radius: 16px;
+        background-color: $textColor200;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: -20px;
+
+        @media (max-width: 550px) {
+          position: static;
+          margin-top: -2%;
+          height: 25%;
+        }
+
+        & > .nameBox {
+          width: 170px;
+          //height: 60px;
+          background-color: $buttonColor;
+          border-radius: 16px;
+          position: relative;
+          top: -25px;
+          //left: 25%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          @media (max-width: 550px) {
+            top: -20px;
+            margin-bottom: 10px;
+          }
+
+
+          & > p {
+            font-family: Roboto, sans-serif;
+            text-align: center;
+            //line-height: 15px;
+            position: relative;
+            top: 13px;
+          }
+        }
+
+        & > .bottomInfo {
+          width: 100%;
+          height: 70%;
+
+          & > p {
+            font-family: Roboto, sans-serif;
+            text-align: center;
+            color: black;
+            margin-top: -10px;
+            padding: 1px;
+            line-height: 15px;
+            margin-bottom: 0 !important;
+            font-weight: 600;
+          }
+        }
+
+        & > .additionalInfo{
+          width: 100%;
+          padding: 10px;
+          & > p{
+            margin-bottom: 0;
+            color: black;
+          }
+        }
+      }
+    }
+
+    .allInfoWrapper {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+
+      @media (min-width: 551px) {
+        width: 70%;
+        height: 100%;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: -10px;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 9;
+
+  &:hover {
+    color: $buttonColor;
+  }
+}
