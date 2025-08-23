@@ -39,7 +39,6 @@ export default function ArtistPage() {
                   default: 7,
                   1200: 5,
                   1024: 3,
-
                 }}
                 className="masonry-grid"
                 columnClassName="masonry-column"
