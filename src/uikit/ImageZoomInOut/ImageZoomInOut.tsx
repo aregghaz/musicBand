@@ -100,6 +100,7 @@ const ImageZoomInOut: React.FC<ImageZoomInOutProps> = ({ imageUrl }) => {
               <TransformComponent
                 wrapperStyle={{ width: '100%', height: '100%' }}
               >
+                {/* eslint-disable-next-line @next/next/no-img-element -- Using a native <img> is intentional here because react-zoom-pan-pinch manipulates the element directly for pan/zoom; next/image wrappers can interfere with transforms. */}
                 <img
                   ref={imgRef}
                   src={imageUrl}
